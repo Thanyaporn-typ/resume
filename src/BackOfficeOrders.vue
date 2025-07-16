@@ -1,16 +1,17 @@
 <template>
     <div class="container py-5">
         <div class="card shadow-lg">
-            <!-- ปรับจาก bg-primary เป็น bg-success และเพิ่มโลโก้ -->
-            <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
-                <div class="d-flex align-items-center">
-                    <img :src="require('@/assets/logo.jpg')" alt="โลโก้" height="70" class="me-3 rounded-circle" />
-
-                    <h4 class="mb-0">
-                        <i class="fas fa-fish me-2"></i>ระบบจัดการออเดอร์ปลาส้ม
-                    </h4>
+            <!-- card-header -->
+            <div
+                class="card-header bg-success text-white d-flex flex-wrap justify-content-between align-items-center gap-2">
+                <div class="d-flex align-items-center flex-grow-1 flex-wrap">
+                    <img :src="require('@/assets/logo.jpg')" alt="โลโก้" height="60"
+                        class="me-3 rounded-circle mb-2 mb-md-0" />
+                    <h5 class="mb-0 text-break">
+                        <i class="fas fa-fish me-2"></i> ระบบจัดการออเดอร์ปลาส้ม
+                    </h5>
                 </div>
-                <div class="d-flex gap-2 ms-auto">
+                <div class="d-flex gap-2">
                     <button class="btn btn-warning" @click="nextRound">
                         <i class="fas fa-redo"></i> เปิดรอบใหม่
                     </button>
@@ -19,6 +20,7 @@
                     </button>
                 </div>
             </div>
+
 
             <div class="card-body">
                 <div class="mb-4">
@@ -78,7 +80,6 @@
                         </button>
                     </div>
                 </div>
-
                 <!-- ตารางออเดอร์ -->
                 <div class="accordion mt-4" id="roundAccordion">
                     <div class="accordion-item" v-for="(orders, round) in rounds" :key="round">
@@ -92,70 +93,74 @@
                         <div :id="'collapse-' + round" class="accordion-collapse collapse"
                             :class="{ show: round === currentRound }" :aria-labelledby="'heading-' + round"
                             data-bs-parent="#roundAccordion">
-                            <div class="accordion-body">
-                                <table class="table table-bordered table-striped text-center align-middle">
-                                    <thead class="table-light">
-                                        <tr>
-                                            <th>#</th>
-                                            <th>สินค้า</th>
-                                            <th>จำนวน (กก.)</th>
-                                            <th>ลูกค้า</th>
-                                            <th>ที่อยู่จัดส่ง</th>
-                                            <th>สถานะ</th>
-                                            <th>รวม (บาท)</th>
-                                            <th>จัดการ</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr v-if="orders.length === 0">
-                                            <td colspan="8">ยังไม่มีออเดอร์</td>
-                                        </tr>
-                                        <tr v-for="(order, index) in orders" :key="index">
-                                            <td>{{ index + 1 }}</td>
-                                            <td>
-                                                <input v-model="order.product" class="form-control form-control-sm" />
-                                            </td>
-                                            <td>
-                                                <input v-model.number="order.kg" type="number" min="1" class="form-control form-control-sm" />
-                                            </td>
-                                            <td>
-                                                <input v-model="order.customer" class="form-control form-control-sm" />
-                                            </td>
-                                            <td>
-                                                <input v-model="order.address" class="form-control form-control-sm" />
-                                            </td>
-                                            <td>
-                                                <select v-model="order.status" class="form-select form-select-sm">
-                                                    <option value="ยังไม่ชำระ">ยังไม่ชำระ</option>
-                                                    <option value="ชำระแล้ว">ชำระแล้ว</option>
-                                                </select>
-                                            </td>
-                                            <td>{{ order.kg * pricePerKg | currency }}</td>
-                                            <td>
-                                                <button class="btn btn-sm btn-outline-danger" @click="deleteOrder(round, index)">
-                                                    ลบ
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="accordion-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped text-center align-middle mb-0">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>สินค้า</th>
+                                                <th>จำนวน (กก.)</th>
+                                                <th>ลูกค้า</th>
+                                                <th>ที่อยู่จัดส่ง</th>
+                                                <th>สถานะ</th>
+                                                <th>รวม (บาท)</th>
+                                                <th>จัดการ</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-if="orders.length === 0">
+                                                <td colspan="8">ยังไม่มีออเดอร์</td>
+                                            </tr>
+                                            <tr v-for="(order, index) in orders" :key="index">
+                                                <td>{{ index + 1 }}</td>
+                                                <td><input v-model="order.product_name"
+                                                        class="form-control form-control-sm" /></td>
+                                                <td><input v-model.number="order.quantity_kg" type="number" min="1"
+                                                        class="form-control form-control-sm" /></td>
+                                                <td><input v-model="order.customer_name"
+                                                        class="form-control form-control-sm" /></td>
+                                                <td><input v-model="order.delivery_address"
+                                                        class="form-control form-control-sm" /></td>
+                                                <td>
+                                                    <select v-model="order.status" class="form-select form-select-sm">
+                                                        <option value="ยังไม่ชำระ">ยังไม่ชำระ</option>
+                                                        <option value="ชำระแล้ว">ชำระแล้ว</option>
+                                                    </select>
+                                                </td>
+                                                <td>{{ order.quantity_kg * pricePerKg | currency }}</td>
+                                                <td class="d-flex gap-1 justify-content-center flex-wrap">
+                                                    <button class="btn btn-sm btn-outline-success"
+                                                        @click="updateOrder(order)">
+                                                        บันทึก
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-danger"
+                                                        @click="deleteOrder(round, index, order.id)">
+                                                        ลบ
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- สรุปยอด -->
+
                 <div class="alert alert-info mt-4">
                     <strong>ยอดรวมรอบ {{ currentRound }}:</strong> {{ totalKg }} กก. /
                     <strong>{{ totalPrice | currency }} บาท</strong>
                 </div>
-
             </div>
         </div>
     </div>
 </template>
-
+  
 <script>
+import Swal from 'sweetalert2'
+
 export default {
     data() {
         return {
@@ -179,47 +184,161 @@ export default {
     },
     computed: {
         totalKg() {
-            return (this.rounds[this.currentRound] || []).reduce((sum, o) => sum + o.kg, 0);
+            return (this.rounds[this.currentRound] || []).reduce((sum, o) => sum + o.quantity_kg, 0);
         },
         totalPrice() {
             return this.totalKg * this.pricePerKg;
         },
     },
     methods: {
-        addOrder() {
-            if (!this.rounds[this.currentRound]) {
-                this.$set(this.rounds, this.currentRound, []);
+        async loadRounds() {
+            const res = await fetch('https://origin-console-service.onrender.com/api/order/rounds');
+            const data = await res.json();
+            data.forEach(round => {
+                this.$set(this.rounds, round.id, []);
+                this.$set(this.roundTitles, round.id, round.title);
+            });
+            if (data.length > 0) {
+                this.currentRound = data[0].id;
+                this.loadOrders(this.currentRound);
             }
-            if (this.newOrder.product && this.newOrder.kg && this.newOrder.customer && this.newOrder.address) {
-                this.rounds[this.currentRound].push({ ...this.newOrder });
-                this.saveToLocalStorage();
+        },
+        async loadOrders(roundId) {
+            const res = await fetch(`https://origin-console-service.onrender.com/api/order/rounds/${roundId}/orders`);
+            const orders = await res.json();
+            this.$set(this.rounds, roundId, orders);
+        },
+        async nextRound() {
+            const title = this.roundTitles[this.currentRound] || `รอบที่ ${this.currentRound}`;
+            const res = await fetch('https://origin-console-service.onrender.com/api/order/rounds', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title })
+            });
+            const data = await res.json();
+            this.currentRound = data.id;
+            this.$set(this.rounds, data.id, []);
+            this.$set(this.roundTitles, data.id, data.title);
+        },
+        async addOrder() {
+            const order = {
+                round_id: this.currentRound,
+                product_name: this.newOrder.product,
+                quantity_kg: this.newOrder.kg,
+                customer_name: this.newOrder.customer,
+                delivery_address: this.newOrder.address,
+                status: this.newOrder.status,
+            };
+
+            try {
+                const res = await fetch('https://origin-console-service.onrender.com/api/order/orders', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(order)
+                });
+
+                if (!res.ok) throw new Error('Add order failed');
+
+                const data = await res.json();
+                this.rounds[this.currentRound].push(data);
+
                 this.newOrder = { product: '', kg: 1, customer: '', address: '', status: 'ยังไม่ชำระ' };
-            } else {
-                alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'เพิ่มออเดอร์เรียบร้อย',
+                    timer: 1500,
+                    showConfirmButton: false
+                });
+            } catch (err) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'เกิดข้อผิดพลาด',
+                    text: 'ไม่สามารถเพิ่มออเดอร์ได้'
+                });
+                console.error(err);
             }
         },
-        deleteOrder(round, index) {
-            this.rounds[round].splice(index, 1);
-            this.saveToLocalStorage();
+
+        async updateOrder(order) {
+            const payload = {
+                product_name: order.product_name,
+                quantity_kg: order.quantity_kg,
+                customer_name: order.customer_name,
+                delivery_address: order.delivery_address,
+                status: order.status
+            };
+
+            try {
+                const res = await fetch(`https://origin-console-service.onrender.com/api/order/orders/${order.id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!res.ok) throw new Error('Update failed');
+
+                const data = await res.json();
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'สำเร็จ',
+                    text: 'อัปเดตออเดอร์เรียบร้อยแล้ว',
+                    timer: 1500,
+                    showConfirmButton: false,
+                });
+
+                console.log('Updated:', data);
+            } catch (err) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'เกิดข้อผิดพลาด',
+                    text: 'ไม่สามารถอัปเดตออเดอร์ได้',
+                });
+                console.error(err);
+            }
         },
-        nextRound() {
-            this.currentRound += 1;
-            this.$set(this.rounds, this.currentRound, []);
-            this.saveToLocalStorage();
+
+        async deleteOrder(round, index, id) {
+            try {
+                const result = await Swal.fire({
+                    title: 'ยืนยันการลบ?',
+                    text: 'คุณต้องการลบออเดอร์นี้ใช่หรือไม่',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#6c757d',
+                    confirmButtonText: 'ลบ',
+                    cancelButtonText: 'ยกเลิก'
+                });
+
+                if (!result.isConfirmed) return;
+
+                const res = await fetch(`https://origin-console-service.onrender.com/api/order/orders/${id}`, {
+                    method: 'DELETE'
+                });
+
+                if (!res.ok) throw new Error('Delete failed');
+
+                this.rounds[round].splice(index, 1);
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'ลบสำเร็จ',
+                    text: 'ออเดอร์ถูกลบแล้ว',
+                    timer: 1500,
+                    showConfirmButton: false
+                });
+            } catch (err) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'เกิดข้อผิดพลาด',
+                    text: 'ไม่สามารถลบออเดอร์ได้'
+                });
+                console.error(err);
+            }
         },
-        saveToLocalStorage() {
-            localStorage.setItem('rounds', JSON.stringify(this.rounds));
-            localStorage.setItem('roundTitles', JSON.stringify(this.roundTitles));
-            localStorage.setItem('currentRound', this.currentRound);
-        },
-        loadFromLocalStorage() {
-            const savedRounds = localStorage.getItem('rounds');
-            const savedTitles = localStorage.getItem('roundTitles');
-            const savedCurrent = localStorage.getItem('currentRound');
-            if (savedRounds) this.rounds = JSON.parse(savedRounds);
-            if (savedTitles) this.roundTitles = JSON.parse(savedTitles);
-            if (savedCurrent) this.currentRound = parseInt(savedCurrent);
-        },
+
         exportCSV(roundNumber) {
             const orders = this.rounds[roundNumber] || [];
             if (!orders.length) return alert('ไม่มีข้อมูลออเดอร์ในรอบนี้');
@@ -227,15 +346,14 @@ export default {
                 ['ลำดับ', 'สินค้า', 'จำนวน (กก.)', 'ลูกค้า', 'ที่อยู่', 'สถานะ', 'รวม (บาท)'],
                 ...orders.map((o, i) => [
                     i + 1,
-                    o.product,
-                    o.kg,
-                    o.customer,
-                    o.address,
+                    o.product_name,
+                    o.quantity_kg,
+                    o.customer_name,
+                    o.delivery_address,
                     o.status || 'ยังไม่ชำระ',
-                    o.kg * this.pricePerKg,
+                    o.quantity_kg * this.pricePerKg,
                 ])
             ].map(row => row.join(',')).join('\n');
-
             const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
@@ -246,15 +364,14 @@ export default {
         },
         resetAll() {
             if (confirm('คุณต้องการล้างข้อมูลทั้งหมดและเริ่มต้นใหม่หรือไม่?')) {
-                this.rounds = { 1: [] };
+                this.rounds = {};
                 this.roundTitles = {};
                 this.currentRound = 1;
-                this.saveToLocalStorage();
             }
-        }
+        },
     },
     created() {
-        this.loadFromLocalStorage();
+        this.loadRounds();
     },
     filters: {
         currency(value) {
@@ -263,9 +380,7 @@ export default {
     },
 };
 </script>
-
-<style scoped>
-.card-header i {
+  
+<style scoped>.card-header i {
     font-size: 1.2rem;
-}
-</style>
+}</style>
