@@ -26,7 +26,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 git add .
-git commit -m "ข้อความ"
+git commit -m "edit fornt and theme"
 git push
 
 npm run build

@@ -76,7 +76,7 @@
           <h1 class="hero-title">แจ้งเหตุภัยพิบัติ<br />ได้ทุกที่ ทุกเวลา</h1>
           <p class="hero-sub">ระบบรับแจ้งเหตุและติดตามสถานะการช่วยเหลือสำหรับประชาชน<br />เชื่อมต่อกับเจ้าหน้าที่ผู้รับผิดชอบโดยตรง</p>
           <button class="btn-hero" @click="currentView = 'form'">
-            <span class="btn-hero-icon">🚨</span> กดแจ้งเหตุ
+            กดแจ้งเหตุ
           </button>
         </div>
       </section>
@@ -156,7 +156,7 @@
         <h2 class="cta-title">พร้อมให้ความช่วยเหลือทันที</h2>
         <p class="cta-sub">หากพบเหตุฉุกเฉินหรือต้องการความช่วยเหลือ กดปุ่มด้านล่างได้เลย</p>
         <button class="btn-hero" @click="currentView = 'form'">
-          <span class="btn-hero-icon">🚨</span> แจ้งเหตุตอนนี้
+          แจ้งเหตุตอนนี้
         </button>
       </section>
     </div>
@@ -165,7 +165,7 @@
     <div v-if="currentView === 'form'" class="page-form">
       <div class="page-header">
         <div class="page-header-inner">
-          <button class="back-btn" @click="currentView = 'landing'">← กลับ</button>
+          <button class="back-btn" @click="currentView = 'landing'">กลับ</button>
           <h1 class="page-title">กรอกข้อมูลเหตุการณ์</h1>
           <div></div>
         </div>
@@ -195,17 +195,27 @@
 
           <!-- Image Upload -->
           <div class="card mt-card">
-            <div class="card-head">📷 รูปภาพเหตุการณ์</div>
-            <div class="upload-area" @click="triggerUpload">
-              <div v-if="!previewImage" class="upload-placeholder">
-                <div class="upload-big-icon">📁</div>
-                <div class="upload-hint">คลิกเพื่อเลือกรูปภาพ</div>
-                <div class="upload-hint-sub">PNG, JPG สูงสุด 10MB</div>
+            <div class="card-head">📷 รูปภาพเหตุการณ์ <span class="upload-count">{{ previewImages.length }}/4</span></div>
+            <div class="upload-grid">
+              <div
+                v-for="(img, idx) in previewImages"
+                :key="idx"
+                class="upload-thumb"
+              >
+                <img :src="img" class="upload-thumb-img" alt="preview" />
+                <button class="upload-thumb-del" @click.stop="removeImage(idx)">✕</button>
               </div>
-              <img v-else :src="previewImage" class="upload-preview" alt="preview" />
-              <input ref="fileInput" type="file" accept="image/*" hidden @change="handleImage" />
+              <div
+                v-if="previewImages.length < 4"
+                class="upload-add-btn"
+                @click="triggerUpload"
+              >
+                <div class="upload-add-icon">+</div>
+                <div class="upload-add-hint">เพิ่มรูป</div>
+              </div>
             </div>
-            <div v-if="previewImage" class="upload-change" @click="triggerUpload">เปลี่ยนรูป</div>
+            <div class="upload-hint-sub upload-hint-bottom">PNG, JPG สูงสุด 10MB ต่อรูป</div>
+            <input ref="fileInput" type="file" accept="image/*" hidden @change="handleImage" />
           </div>
         </div>
 
@@ -265,7 +275,7 @@
             <div class="card-head">📞 ข้อมูลผู้แจ้ง</div>
 
             <button class="btn-thaid-web">
-              <span class="thaid-badge">Thai<strong>D</strong></span>
+              <img src="./assets/thai-id.webp" class="thaid-badge" alt="ThaiD" />
               ลงชื่อเข้าสู่ระบบด้วย ThaiD
             </button>
 
@@ -283,7 +293,7 @@
             </div>
 
             <button class="btn-submit-web" @click="submitForm">
-              🚨 ยืนยันและส่งข้อมูล
+               ยืนยันและส่งข้อมูล
             </button>
           </div>
         </div>
@@ -333,7 +343,7 @@
 
         <div class="confirm-actions">
           <button class="btn-thaid-web" @click="currentView = 'tracking'">
-            <span class="thaid-badge">Thai<strong>D</strong></span>
+            <img src="./assets/thai-id.webp" class="thaid-badge" alt="ThaiD" />
             เข้าสู่ระบบเพื่อติดตามเคส
           </button>
           <button class="btn-outline-web" @click="currentView = 'landing'">กลับไปหน้าหลัก</button>
@@ -447,7 +457,7 @@ export default {
       mobileMenuOpen: false,
       urgency: 1,
       peopleCount: 0,
-      previewImage: null,
+      previewImages: [],
       form: { name: '', phone: '', location: '' },
       caseNumber: '1111',
       activeTab: 'all',
@@ -498,11 +508,13 @@ export default {
     triggerUpload() { this.$refs.fileInput.click() },
     handleImage(e) {
       const file = e.target.files[0]
-      if (!file) return
+      if (!file || this.previewImages.length >= 4) return
       const reader = new FileReader()
-      reader.onload = ev => { this.previewImage = ev.target.result }
+      reader.onload = ev => { this.previewImages.push(ev.target.result) }
       reader.readAsDataURL(file)
+      e.target.value = ''
     },
+    removeImage(idx) { this.previewImages.splice(idx, 1) },
     submitForm() {
       this.caseNumber = String(Math.floor(1000 + Math.random() * 9000))
       const urgencyMap = ['low', 'mid', 'high']
@@ -524,6 +536,7 @@ export default {
         contactName: this.form.name || 'ไม่ระบุ',
         contactPhone: this.form.phone || 'ไม่ระบุ',
         peopleCount: this.peopleCount,
+        images: [...this.previewImages],
       }
       this.cases.unshift({
         id: report.id, date: dateStr,
@@ -1142,35 +1155,85 @@ export default {
 .coord-sep { color: #ddd; }
 
 /* Upload */
-.upload-area {
-  margin: 20px;
-  border: 2px dashed #d8d8d8;
-  border-radius: 12px;
-  min-height: 140px;
+.upload-count {
+  font-size: 11px;
+  font-weight: 500;
+  color: #aaa;
+  margin-left: 6px;
+}
+
+.upload-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 16px 20px 8px;
+}
+
+.upload-thumb {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.upload-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.upload-thumb-del {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  font-size: 10px;
+  line-height: 1;
+  cursor: pointer;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Kanit', 'Inter', sans-serif;
+}
+
+.upload-add-btn {
+  aspect-ratio: 1;
+  border-radius: 10px;
+  border: 2px dashed #d8d8d8;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s;
-  overflow: hidden;
+  background: #fafafa;
+  gap: 4px;
 }
 
-.upload-area:hover { border-color: #f8d247; background: #fdf6d8; }
+.upload-add-btn:hover { border-color: #f8d247; background: #fdf6d8; }
 
-.upload-placeholder { text-align: center; padding: 20px; }
-.upload-big-icon { font-size: 40px; margin-bottom: 10px; }
-.upload-hint { font-size: 14px; font-weight: 600; color: #555; margin-bottom: 4px; }
-.upload-hint-sub { font-size: 12px; color: #aaa; }
+.upload-add-icon {
+  font-size: 22px;
+  color: #bbb;
+  line-height: 1;
+}
 
-.upload-preview { width: 100%; height: 160px; object-fit: cover; }
+.upload-add-hint {
+  font-size: 11px;
+  color: #bbb;
+}
 
-.upload-change {
+.upload-hint-bottom {
   text-align: center;
-  padding: 8px;
-  font-size: 13px;
-  color: #f8d247;
-  cursor: pointer;
-  border-top: 1px solid #f0f0f0;
+  padding: 0 20px 14px;
+  font-size: 11px;
+  color: #ccc;
 }
 
 /* Form Fields */
@@ -1311,11 +1374,10 @@ export default {
 .btn-thaid-web:hover { opacity: 0.88; }
 
 .thaid-badge {
-  background: #fff;
-  color: #555859;
-  font-size: 12px;
-  padding: 2px 8px;
+  height: 35px;
+  width: auto;
   border-radius: 4px;
+  vertical-align: middle;
 }
 
 .divider-or {
@@ -1339,7 +1401,7 @@ export default {
 .divider-or::after { right: 0; }
 
 .field-row {
-  display: flex;
+  /* display: flex; */
   gap: 12px;
   padding: 0 24px;
   margin-bottom: 8px;
@@ -2069,7 +2131,7 @@ export default {
 
   /* Page Header */
   .page-header { padding: 0 16px; }
-  .page-header-inner { height: auto; padding: 12px 0; flex-wrap: wrap; gap: 8px; }
+  .page-header-inner { height: auto; padding: 12px 0; gap: 8px; }
   .page-title { font-size: 17px; order: -1; width: 100%; }
   .back-btn, .btn-new { font-size: 13px; padding: 7px 12px; }
 
