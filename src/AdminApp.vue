@@ -81,7 +81,7 @@
               <div class="stat-num">{{ doneCount.toLocaleString() }}</div>
               <div class="stat-label">เสร็จสิ้นแล้ว</div>
             </div>
-            <div class="stat-card" style="border-top:4px solid #FFD006">
+            <div class="stat-card" style="border-top:4px solid #f8d247">
               <div class="stat-icon">⏱️</div>
               <div class="stat-num">{{ slaRate }}%</div>
               <div class="stat-label">SLA ผ่านเกณฑ์</div>
@@ -141,10 +141,10 @@
                       :stroke-dasharray="failDash" stroke-linecap="round"
                       transform="rotate(-90 60 60)"/>
                     <!-- foreground (yellow = passed) -->
-                    <circle cx="60" cy="60" r="45" fill="none" stroke="#FFD006" stroke-width="16"
+                    <circle cx="60" cy="60" r="45" fill="none" stroke="#f8d247" stroke-width="16"
                       :stroke-dasharray="passDash" stroke-linecap="round"
                       transform="rotate(-90 60 60)"/>
-                    <text x="60" y="56" text-anchor="middle" font-size="18" font-weight="800" fill="#0a162f">{{ slaRate }}%</text>
+                    <text x="60" y="56" text-anchor="middle" font-size="18" font-weight="800" fill="#555859">{{ slaRate }}%</text>
                     <text x="60" y="70" text-anchor="middle" font-size="9" fill="#888">ผ่านเกณฑ์</text>
                   </svg>
                 </div>
@@ -315,19 +315,31 @@
               <div class="risk-map">
                 <!-- Map background -->
                 <div class="map-bg-grid"></div>
-                <!-- Roads (CSS) -->
+                <!-- Roads main -->
                 <div class="road road-h" style="top:35%;left:0;width:100%;height:3px"></div>
                 <div class="road road-h" style="top:62%;left:0;width:100%;height:2px"></div>
                 <div class="road road-v" style="left:30%;top:0;width:2px;height:100%"></div>
                 <div class="road road-v" style="left:58%;top:0;width:2px;height:100%"></div>
                 <div class="road road-v" style="left:80%;top:0;width:2px;height:100%"></div>
+                <!-- Roads minor -->
+                <div class="road road-h" style="top:18%;left:0;width:100%;height:1px;opacity:0.55"></div>
+                <div class="road road-h" style="top:80%;left:0;width:100%;height:1px;opacity:0.55"></div>
+                <div class="road road-v" style="left:10%;top:0;width:1px;height:100%;opacity:0.55"></div>
+                <div class="road road-v" style="left:44%;top:0;width:1px;height:100%;opacity:0.55"></div>
                 <!-- Area Labels -->
-                <div class="map-area-label" style="top:8%;left:34%">รามคำแหง</div>
-                <div class="map-area-label" style="top:8%;left:60%">SAPHAN SUNG</div>
-                <div class="map-area-label" style="top:72%;left:34%">ลาดกระบัง</div>
-                <div class="map-area-label" style="top:72%;left:62%">นวมินทร์</div>
-                <div class="map-poi" style="top:28%;left:52%">🏥 รพ.รามคำแหง</div>
-                <div class="map-poi" style="top:45%;left:22%">🏫 โรงเรียน</div>
+                <div class="map-area-label" style="top:7%;left:33%">รามคำแหง</div>
+                <div class="map-area-label" style="top:7%;left:60%">สะพานสูง</div>
+                <div class="map-area-label" style="top:70%;left:33%">ลาดกระบัง</div>
+                <div class="map-area-label" style="top:70%;left:62%">นวมินทร์</div>
+                <div class="map-area-label" style="top:7%;left:4%">มีนบุรี</div>
+                <div class="map-area-label" style="top:48%;left:3%">ประเวศ</div>
+                <!-- POIs -->
+                <div class="map-poi" style="top:27%;left:50%">🏥 รพ.รามคำแหง</div>
+                <div class="map-poi" style="top:44%;left:20%">🏫 โรงเรียน</div>
+                <div class="map-poi" style="top:14%;left:36%">🚒 สถานีดับเพลิง</div>
+                <div class="map-poi" style="top:67%;left:68%">🏛️ ที่ว่าการอำเภอ</div>
+                <!-- Compass -->
+                <div class="map-compass">N ↑</div>
                 <!-- Risk zone circles -->
                 <div
                   v-for="zone in riskZones"
@@ -634,7 +646,7 @@ export default {
 /* ── Base ── */
 .admin-app {
   min-height: 100vh;
-  background: #f4f6fa;
+  background: #f7f7f7;
   font-family: 'Kanit', 'Inter', sans-serif;
   display: flex;
   flex-direction: column;
@@ -642,7 +654,7 @@ export default {
 
 /* ── Topbar ── */
 .admin-topbar {
-  background: #0a162f;
+  background: #555859;
   color: #fff;
   height: 60px;
   padding: 0 24px;
@@ -681,7 +693,7 @@ export default {
   width: 280px; overflow: hidden; z-index: 300;
 }
 .alert-dropdown-head {
-  background: #0a162f; color: #FFD006;
+  background: #555859; color: #f8d247;
   padding: 10px 14px; font-size: 13px; font-weight: 700;
 }
 .alert-item {
@@ -695,13 +707,13 @@ export default {
   animation: blink 0.8s ease infinite alternate;
 }
 @keyframes blink { from { opacity: 0.4; } to { opacity: 1; } }
-.alert-item-id { font-weight: 700; color: #0a162f; }
+.alert-item-id { font-weight: 700; color: #555859; }
 .alert-item-loc { color: #888; font-size: 12px; }
 
 .admin-user-chip { display: flex; align-items: center; gap: 10px; }
 .admin-avatar {
   width: 34px; height: 34px; border-radius: 50%;
-  background: #FFD006; color: #0a162f;
+  background: #f8d247; color: #555859;
   font-weight: 800; font-size: 15px;
   display: flex; align-items: center; justify-content: center;
 }
@@ -716,7 +728,7 @@ export default {
 /* ── Sidebar ── */
 .admin-sidebar {
   width: 200px; flex-shrink: 0;
-  background: #0a162f;
+  background: #555859;
   padding: 20px 12px;
   display: flex; flex-direction: column; gap: 4px;
 }
@@ -730,7 +742,7 @@ export default {
   transition: all 0.2s;
 }
 .sidebar-item:hover { background: rgba(255,255,255,0.08); color: #fff; }
-.sidebar-item.active { background: #FFD006; color: #0a162f; }
+.sidebar-item.active { background: #f8d247; color: #555859; }
 .sidebar-icon { font-size: 16px; flex-shrink: 0; }
 
 /* ── Main ── */
@@ -743,7 +755,7 @@ export default {
   display: flex; align-items: center; justify-content: space-between;
   margin-bottom: 20px;
 }
-.view-title { font-size: 22px; font-weight: 800; color: #0a162f; }
+.view-title { font-size: 22px; font-weight: 800; color: #555859; }
 .view-date { font-size: 13px; color: #888; }
 
 /* ── Stats Row ── */
@@ -761,7 +773,7 @@ export default {
   text-align: center;
 }
 .stat-icon { font-size: 24px; margin-bottom: 8px; }
-.stat-num { font-size: 28px; font-weight: 800; color: #0a162f; line-height: 1; }
+.stat-num { font-size: 28px; font-weight: 800; color: #555859; line-height: 1; }
 .stat-label { font-size: 13px; color: #888; margin-top: 4px; }
 
 /* ── Cards ── */
@@ -772,7 +784,7 @@ export default {
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
 }
 .card-head {
-  font-size: 14px; font-weight: 700; color: #0a162f;
+  font-size: 14px; font-weight: 700; color: #555859;
   margin-bottom: 14px;
 }
 .card-head-row {
@@ -788,7 +800,6 @@ export default {
   gap: 16px;
 }
 .charts-col { display: flex; flex-direction: column; gap: 16px; }
-.chart-card { }
 
 /* ── Table ── */
 .table-wrap { overflow-x: auto; }
@@ -809,7 +820,7 @@ export default {
 .admin-table tr:last-child td { border-bottom: none; }
 .admin-table tr:hover td { background: #fafbff; }
 .row-urgent td { background: #fff8f8 !important; }
-.td-id { font-weight: 700; color: #0a162f; white-space: nowrap; }
+.td-id { font-weight: 700; color: #555859; white-space: nowrap; }
 .td-loc { max-width: 160px; }
 .td-date { white-space: nowrap; color: #888; }
 .empty-table { text-align: center; padding: 40px; color: #aaa; font-size: 14px; }
@@ -842,7 +853,7 @@ export default {
 .dot {
   width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
 }
-.dot.yellow { background: #FFD006; }
+.dot.yellow { background: #f8d247; }
 .dot.red    { background: #ef4444; }
 
 /* ── Line Chart ── */
@@ -858,28 +869,28 @@ export default {
 /* ── Buttons ── */
 .btn-sm {
   padding: 5px 12px; border-radius: 8px;
-  background: #f4f6fa; border: 1px solid #e0e4ef;
+  background: #f7f7f7; border: 1px solid #e0e4ef;
   font-family: 'Kanit', 'Inter', sans-serif; font-size: 13px; font-weight: 600;
   color: #555; cursor: pointer; transition: all 0.2s;
 }
-.btn-sm:hover { background: #0a162f; color: #FFD006; border-color: #0a162f; }
+.btn-sm:hover { background: #555859; color: #f8d247; border-color: #555859; }
 .btn-xs {
   padding: 3px 10px; border-radius: 6px;
-  background: #f4f6fa; border: 1px solid #e0e4ef;
+  background: #f7f7f7; border: 1px solid #e0e4ef;
   font-family: 'Kanit', 'Inter', sans-serif; font-size: 12px; font-weight: 600;
   color: #555; cursor: pointer; transition: all 0.2s;
 }
-.btn-xs:hover { background: #0a162f; color: #fff; }
+.btn-xs:hover { background: #555859; color: #fff; }
 .btn-xs.danger:hover { background: #ef4444; border-color: #ef4444; color: #fff; }
 .btn-export {
   padding: 7px 16px; border-radius: 8px;
-  background: #0a162f; color: #FFD006;
+  background: #555859; color: #f8d247;
   border: none; font-family: 'Kanit', 'Inter', sans-serif;
   font-size: 13px; font-weight: 700; cursor: pointer;
 }
 .btn-save {
   padding: 9px 20px; border-radius: 8px;
-  background: #FFD006; color: #0a162f;
+  background: #f8d247; color: #555859;
   border: none; font-family: 'Kanit', 'Inter', sans-serif;
   font-size: 14px; font-weight: 700; cursor: pointer;
 }
@@ -905,9 +916,9 @@ export default {
   flex: 1; min-width: 200px;
   border: 1.5px solid #e0e4ef; border-radius: 8px;
   padding: 8px 14px; font-family: 'Kanit', 'Inter', sans-serif;
-  font-size: 14px; color: #0a162f; outline: none;
+  font-size: 14px; color: #555859; outline: none;
 }
-.search-input:focus { border-color: #FFD006; }
+.search-input:focus { border-color: #f8d247; }
 .filter-select {
   border: 1.5px solid #e0e4ef; border-radius: 8px;
   padding: 8px 12px; font-family: 'Kanit', 'Inter', sans-serif;
@@ -932,16 +943,16 @@ export default {
   padding: 8px 12px; font-family: 'Kanit', 'Inter', sans-serif; font-size: 14px;
   outline: none;
 }
-.zone-input:focus { border-color: #FFD006; }
+.zone-input:focus { border-color: #f8d247; }
 .btn-save-zone {
   padding: 8px 16px; border-radius: 8px;
-  background: #0a162f; color: #FFD006;
+  background: #555859; color: #f8d247;
   border: none; font-family: 'Kanit', 'Inter', sans-serif;
   font-size: 13px; font-weight: 700; cursor: pointer;
 }
 .btn-cancel {
   padding: 8px 14px; border-radius: 8px;
-  background: #f4f6fa; border: 1px solid #e0e4ef;
+  background: #f7f7f7; border: 1px solid #e0e4ef;
   font-family: 'Kanit', 'Inter', sans-serif; font-size: 13px; cursor: pointer;
 }
 
@@ -958,7 +969,7 @@ export default {
   transition: all 0.15s;
 }
 .zone-item:hover { border-color: #e0e4ef; }
-.zone-item.selected { border-color: #FFD006; background: #fffbea; }
+.zone-item.selected { border-color: #f8d247; background: #fdf6d8; }
 .zone-level-dot {
   width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
 }
@@ -966,7 +977,7 @@ export default {
 .zone-level-dot.medium { background: #f59e0b; }
 .zone-level-dot.low    { background: #22c55e; }
 .zone-item-info { flex: 1; }
-.zone-name { font-size: 13px; font-weight: 700; color: #0a162f; }
+.zone-name { font-size: 13px; font-weight: 700; color: #555859; }
 .zone-level-label { font-size: 12px; color: #888; }
 .zone-badge {
   padding: 3px 8px; border-radius: 999px;
@@ -977,7 +988,6 @@ export default {
 .zone-badge.low    { background: #dcfce7; color: #16a34a; }
 
 /* ── Risk Map ── */
-.risk-map-card { }
 .map-legend-row { display: flex; gap: 14px; align-items: center; }
 .ml-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #555; }
 .ml-dot {
@@ -1013,7 +1023,7 @@ export default {
 }
 .map-poi {
   position: absolute;
-  font-size: 11px; color: #0a162f;
+  font-size: 11px; color: #555859;
   background: rgba(255,255,255,0.9);
   padding: 3px 7px; border-radius: 6px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.15);
@@ -1040,15 +1050,15 @@ export default {
   border: 2.5px solid rgba(34,197,94,0.5);
 }
 .risk-circle.selected-zone {
-  box-shadow: 0 0 0 4px rgba(255,208,6,0.5);
+  box-shadow: 0 0 0 4px rgba(248,210,71,0.5);
   animation: zone-pulse 1.5s ease-out infinite;
 }
 @keyframes zone-pulse {
-  0%   { box-shadow: 0 0 0 0 rgba(255,208,6,0.5); }
-  100% { box-shadow: 0 0 0 12px rgba(255,208,6,0); }
+  0%   { box-shadow: 0 0 0 0 rgba(248,210,71,0.5); }
+  100% { box-shadow: 0 0 0 12px rgba(248,210,71,0); }
 }
 .risk-zone-label {
-  font-size: 11px; font-weight: 700; color: #0a162f;
+  font-size: 11px; font-weight: 700; color: #555859;
   background: rgba(255,255,255,0.85);
   padding: 2px 8px; border-radius: 999px;
   text-align: center; white-space: nowrap;
@@ -1060,10 +1070,17 @@ export default {
   border-radius: 8px; padding: 4px 10px;
   font-size: 12px; font-weight: 700;
 }
+.map-compass {
+  position: absolute; bottom: 12px; left: 12px;
+  background: rgba(255,255,255,0.92);
+  border-radius: 6px; padding: 4px 10px;
+  font-size: 12px; font-weight: 800; color: #555859;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  letter-spacing: 1px;
+}
 
 /* ── Config View ── */
 .view-config { display: flex; flex-direction: column; gap: 16px; }
-.config-card { }
 .config-row {
   display: flex; align-items: center; justify-content: space-between;
   padding: 10px 0; border-bottom: 1px solid #f0f2f8;
@@ -1076,7 +1093,7 @@ export default {
   padding: 6px 10px; font-family: 'Kanit', 'Inter', sans-serif;
   font-size: 15px; font-weight: 700; text-align: center; outline: none;
 }
-.sla-input:focus { border-color: #FFD006; }
+.sla-input:focus { border-color: #f8d247; }
 .sla-unit { font-size: 13px; color: #888; }
 .config-save-row {
   display: flex; align-items: center; gap: 12px; margin-top: 14px;
@@ -1084,7 +1101,7 @@ export default {
 .user-cell { display: flex; align-items: center; gap: 8px; }
 .user-small-avatar {
   width: 26px; height: 26px; border-radius: 50%;
-  background: #FFD006; color: #0a162f;
+  background: #f8d247; color: #555859;
   font-weight: 800; font-size: 13px;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
@@ -1103,7 +1120,7 @@ export default {
 
 /* ── Footer ── */
 .admin-footer {
-  background: #0a162f; color: #556;
+  background: #555859; color: #556;
   text-align: center; padding: 12px;
   font-size: 12px;
 }
@@ -1131,6 +1148,16 @@ export default {
   .stats-row { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .stat-num { font-size: 22px; }
   .view-title { font-size: 19px; }
+
+  /* Config */
+  .config-row { flex-wrap: wrap; gap: 8px; }
+}
+
+@media (max-width: 720px) {
+  /* Zone list stacks under map */
+  .zone-list { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+  .zone-item { flex: 1; min-width: 140px; }
+  .risk-map { height: 320px; }
 }
 
 /* ══════════════════════════════════════
@@ -1185,7 +1212,7 @@ export default {
   .sidebar-item:hover { background: rgba(255,255,255,0.06); color: #fff; }
   .sidebar-item.active {
     background: transparent;
-    color: #FFD006;
+    color: #f8d247;
   }
 
   /* Main */

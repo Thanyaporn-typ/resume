@@ -22,3 +22,12 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+
+git add .
+git commit -m "ข้อความ"
+git push
+
+npm run build
+firebase deploy

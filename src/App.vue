@@ -18,24 +18,36 @@
 
     <!-- ══ Mode Switcher ══ -->
     <div class="mode-switcher">
-      <button
-        :class="['mode-btn', mode === 'citizen' ? 'active' : '']"
-        @click="mode = 'citizen'"
-      >👤 ประชาชน</button>
-      <button
-        :class="['mode-btn', mode === 'officer' ? 'active' : '']"
-        @click="mode = 'officer'; newTaskCount = 0"
-      >
-        🦺 เจ้าหน้าที่ภาคสนาม
-        <span class="notif-badge" v-if="newTaskCount > 0">{{ newTaskCount }}</span>
-      </button>
-      <button
-        :class="['mode-btn', mode === 'admin' ? 'active' : '']"
-        @click="mode = 'admin'; newTaskCount = 0"
-      >
-        ⚙️ ผู้ดูแลระบบ
-        <span class="notif-badge" v-if="mode !== 'admin' && newTaskCount > 0">{{ newTaskCount }}</span>
-      </button>
+      <div class="switcher-brand">
+        <span class="switcher-brand-icon">🛡️</span>
+        <span class="switcher-brand-name">ระบบบริหารจัดการภัยพิบัติ</span>
+        <span class="demo-tag">DEMO</span>
+      </div>
+      <div class="switcher-tabs">
+        <button
+          :class="['mode-btn', mode === 'citizen' ? 'active' : '']"
+          @click="mode = 'citizen'"
+        >
+          <span class="mode-btn-icon">👤</span>
+          <span class="mode-btn-label">ประชาชน</span>
+        </button>
+        <button
+          :class="['mode-btn', mode === 'officer' ? 'active' : '']"
+          @click="mode = 'officer'; newTaskCount = 0"
+        >
+          <span class="mode-btn-icon">🦺</span>
+          <span class="mode-btn-label">เจ้าหน้าที่</span>
+          <span class="notif-badge" v-if="newTaskCount > 0">{{ newTaskCount }}</span>
+        </button>
+        <button
+          :class="['mode-btn', mode === 'admin' ? 'active' : '']"
+          @click="mode = 'admin'; newTaskCount = 0"
+        >
+          <span class="mode-btn-icon">⚙️</span>
+          <span class="mode-btn-label">ผู้ดูแลระบบ</span>
+          <span class="notif-badge" v-if="mode !== 'admin' && newTaskCount > 0">{{ newTaskCount }}</span>
+        </button>
+      </div>
     </div>
 
     <CitizenApp
@@ -92,31 +104,66 @@ export default {
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-body { background: #f0f2f5; font-family: 'Kanit', 'Inter', sans-serif; }
+body { background: #f7f7f7; font-family: 'Kanit', 'Inter', sans-serif; }
 
 /* Mode Switcher */
 .mode-switcher {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 4px;
-  background: #060e1e;
-  padding: 8px 16px;
+  justify-content: space-between;
+  background: #3d3f40;
+  padding: 0 24px;
+  height: 52px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.switcher-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.switcher-brand-icon { font-size: 20px; }
+.switcher-brand-name {
+  font-family: 'Kanit', 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.3px;
+}
+.demo-tag {
+  background: rgba(248,210,71,0.18);
+  color: #f8d247;
+  border: 1px solid rgba(248,210,71,0.35);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+}
+.switcher-tabs {
+  display: flex;
+  align-items: center;
+  gap: 2px;
 }
 .mode-btn {
   position: relative;
-  padding: 7px 22px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 18px;
   border: none;
   background: transparent;
-  color: #778;
+  color: rgba(255,255,255,0.5);
   font-family: 'Kanit', 'Inter', sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  border-radius: 999px;
+  border-radius: 8px;
   transition: all 0.2s;
 }
-.mode-btn.active { background: #FFD006; color: #060e1e; }
+.mode-btn:hover { color: #fff; background: rgba(255,255,255,0.07); }
+.mode-btn.active { background: #f8d247; color: #3d3f40; }
+.mode-btn-icon { font-size: 15px; }
 .notif-badge {
   position: absolute;
   top: -2px; right: -2px;
@@ -140,7 +187,7 @@ body { background: #f0f2f5; font-family: 'Kanit', 'Inter', sans-serif; }
   position: fixed;
   bottom: 24px; right: 24px;
   z-index: 9999;
-  background: #0a162f;
+  background: #555859;
   color: #fff;
   border-radius: 14px;
   padding: 16px 18px;
@@ -158,11 +205,11 @@ body { background: #f0f2f5; font-family: 'Kanit', 'Inter', sans-serif; }
   to   { transform: rotate(10deg); }
 }
 .toast-body { flex: 1; }
-.toast-title { font-size: 15px; font-weight: 700; color: #FFD006; margin-bottom: 3px; }
+.toast-title { font-size: 15px; font-weight: 700; color: #f8d247; margin-bottom: 3px; }
 .toast-sub { font-size: 13px; color: #aab; }
 .toast-action {
-  background: #FFD006;
-  color: #0a162f;
+  background: #f8d247;
+  color: #555859;
   border: none;
   border-radius: 8px;
   padding: 6px 12px;
@@ -198,7 +245,22 @@ body { background: #f0f2f5; font-family: 'Kanit', 'Inter', sans-serif; }
   to   { transform: translateY(80px); opacity: 0; }
 }
 
+/* ══ Responsive — Mode Switcher ══ */
+@media (max-width: 768px) {
+  .mode-switcher { padding: 0 16px; }
+  .switcher-brand-name { display: none; }
+  .demo-tag { display: none; }
+}
 @media (max-width: 480px) {
+  .mode-switcher { height: 46px; padding: 0 10px; }
+  .switcher-brand-icon { font-size: 18px; }
+  .mode-btn { padding: 6px 10px; font-size: 12px; gap: 4px; }
+  .mode-btn-icon { font-size: 13px; }
   .alert-toast { left: 12px; right: 12px; bottom: 12px; }
+}
+@media (max-width: 360px) {
+  .mode-btn-label { display: none; }
+  .mode-btn { padding: 8px 14px; }
+  .mode-btn-icon { font-size: 17px; }
 }
 </style>

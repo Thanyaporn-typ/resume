@@ -519,7 +519,7 @@ export default {
 /* ── Base ── */
 .officer-app {
   min-height: 100vh;
-  background: #f4f6fa;
+  background: #f7f7f7;
   font-family: 'Kanit', 'Inter', sans-serif;
   display: flex;
   flex-direction: column;
@@ -527,7 +527,7 @@ export default {
 
 /* ── Navbar ── */
 .officer-navbar {
-  background: #0a162f;
+  background: #555859;
   color: #fff;
   padding: 0 24px;
   height: 64px;
@@ -545,7 +545,7 @@ export default {
 .on-user { display: flex; align-items: center; gap: 10px; }
 .on-avatar {
   width: 36px; height: 36px; border-radius: 50%;
-  background: #FFD006; color: #0a162f;
+  background: #f8d247; color: #555859;
   display: flex; align-items: center; justify-content: center;
   font-weight: 800; font-size: 16px;
 }
@@ -571,7 +571,7 @@ export default {
 .wf-circle {
   width: 32px; height: 32px; border-radius: 50%;
   border: 2px solid #d0d5e0;
-  background: #f4f6fa;
+  background: #f7f7f7;
   color: #9aa;
   display: flex; align-items: center; justify-content: center;
   font-size: 14px; font-weight: 700;
@@ -579,9 +579,9 @@ export default {
   flex-shrink: 0;
 }
 .wf-step.active .wf-circle {
-  border-color: #FFD006;
-  background: #FFD006;
-  color: #0a162f;
+  border-color: #f8d247;
+  background: #f8d247;
+  color: #555859;
 }
 .wf-step.done .wf-circle {
   border-color: #22c55e;
@@ -594,7 +594,7 @@ export default {
   font-weight: 500;
   white-space: nowrap;
 }
-.wf-step.active .wf-label { color: #0a162f; font-weight: 700; }
+.wf-step.active .wf-label { color: #555859; font-weight: 700; }
 .wf-step.done .wf-label { color: #22c55e; }
 .wf-line {
   width: 40px; height: 2px;
@@ -607,7 +607,7 @@ export default {
 .page-tasks { flex: 1; display: flex; flex-direction: column; }
 
 .tasks-header {
-  background: #0a162f;
+  background: #555859;
   color: #fff;
   padding: 20px 24px 0;
 }
@@ -642,7 +642,7 @@ export default {
   justify-content: center;
   gap: 6px;
 }
-.task-tab.active { color: #FFD006; border-bottom-color: #FFD006; }
+.task-tab.active { color: #f8d247; border-bottom-color: #f8d247; }
 .task-tab-count {
   background: rgba(255,255,255,0.15);
   color: #fff;
@@ -651,7 +651,7 @@ export default {
   font-size: 12px;
   font-weight: 700;
 }
-.task-tab.active .task-tab-count { background: #FFD006; color: #0a162f; }
+.task-tab.active .task-tab-count { background: #f8d247; color: #555859; }
 
 .new-dot {
   position: absolute;
@@ -692,8 +692,8 @@ export default {
 }
 .banner-msg { flex: 1; font-size: 14px; font-weight: 700; }
 .banner-btn {
-  background: #FFD006;
-  color: #0a162f;
+  background: #f8d247;
+  color: #555859;
   border: none;
   border-radius: 8px;
   padding: 6px 14px;
@@ -745,7 +745,7 @@ export default {
   justify-content: space-between;
   margin-bottom: 10px;
 }
-.task-id { font-size: 16px; font-weight: 800; color: #0a162f; }
+.task-id { font-size: 16px; font-weight: 800; color: #555859; }
 .urgency-tag {
   padding: 3px 10px;
   border-radius: 999px;
@@ -773,8 +773,8 @@ export default {
   justify-content: flex-end;
 }
 .btn-accept {
-  background: #0a162f;
-  color: #FFD006;
+  background: #555859;
+  color: #f8d247;
   border: none;
   border-radius: 8px;
   padding: 8px 20px;
@@ -786,8 +786,8 @@ export default {
 }
 .btn-accept:hover { background: #2d2d4e; }
 .btn-continue {
-  background: #FFD006;
-  color: #0a162f;
+  background: #f8d247;
+  color: #555859;
   border: none;
   border-radius: 8px;
   padding: 8px 20px;
@@ -833,13 +833,13 @@ export default {
   color: #555;
   cursor: pointer;
 }
-.back-btn:hover { background: #f4f6fa; }
-.detail-title { flex: 1; font-size: 18px; font-weight: 700; color: #0a162f; }
+.back-btn:hover { background: #f7f7f7; }
+.detail-title { flex: 1; font-size: 18px; font-weight: 700; color: #555859; }
 .detail-id {
   font-size: 13px;
   font-weight: 700;
-  color: #FFD006;
-  background: #0a162f;
+  color: #f8d247;
+  background: #555859;
   padding: 3px 10px;
   border-radius: 999px;
 }
@@ -865,7 +865,7 @@ export default {
 .info-card-head {
   font-size: 14px;
   font-weight: 700;
-  color: #0a162f;
+  color: #555859;
   margin-bottom: 12px;
   padding-bottom: 10px;
   border-bottom: 1px solid #f0f2f8;
@@ -880,7 +880,7 @@ export default {
 }
 .info-row:last-child { border-bottom: none; }
 .info-label { color: #888; }
-.info-val { color: #0a162f; font-weight: 600; }
+.info-val { color: #555859; font-weight: 600; }
 
 /* ── Map ── */
 .map-card {
@@ -890,7 +890,7 @@ export default {
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
 }
 .map-card-head {
-  font-size: 14px; font-weight: 700; color: #0a162f;
+  font-size: 14px; font-weight: 700; color: #555859;
   padding: 14px 18px 10px;
   border-bottom: 1px solid #f0f2f8;
 }
@@ -925,7 +925,7 @@ export default {
   bottom: 10px; left: 0; right: 0;
   text-align: center;
   font-size: 12px; font-weight: 600;
-  color: #0a162f;
+  color: #555859;
   background: rgba(255,255,255,0.85);
   padding: 4px;
 }
@@ -946,8 +946,8 @@ export default {
 .distance-badge {
   position: absolute;
   bottom: 10px; right: 10px;
-  background: #0a162f;
-  color: #FFD006;
+  background: #555859;
+  color: #f8d247;
   font-size: 12px; font-weight: 700;
   padding: 4px 10px;
   border-radius: 999px;
@@ -955,7 +955,7 @@ export default {
 
 /* ── Incident Image ── */
 .incident-img-area {
-  background: #f4f6fa;
+  background: #f7f7f7;
   border-radius: 10px;
   height: 120px;
   display: flex;
@@ -968,7 +968,7 @@ export default {
 .urgency-slider-wrap { display: flex; flex-direction: column; gap: 10px; }
 .urgency-slider {
   width: 100%;
-  accent-color: #FFD006;
+  accent-color: #f8d247;
   cursor: pointer;
 }
 .urgency-labels {
@@ -977,7 +977,7 @@ export default {
   font-size: 13px;
   color: #aaa;
 }
-.urg-active { color: #FFD006; font-weight: 700; }
+.urg-active { color: #f8d247; font-weight: 700; }
 
 /* ── Needs ── */
 .needs-grid {
@@ -1000,9 +1000,9 @@ export default {
   cursor: pointer;
 }
 .need-box.checked {
-  border-color: #FFD006;
-  background: #fffbea;
-  color: #0a162f;
+  border-color: #f8d247;
+  background: #fdf6d8;
+  color: #555859;
 }
 
 /* ── People Counter ── */
@@ -1014,16 +1014,16 @@ export default {
 }
 .counter-btn {
   width: 36px; height: 36px; border-radius: 50%;
-  background: #f4f6fa;
+  background: #f7f7f7;
   border: 2px solid #e0e4ef;
   font-size: 20px; font-weight: 700;
-  color: #0a162f;
+  color: #555859;
   cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   transition: all 0.15s;
 }
-.counter-btn:hover { background: #FFD006; border-color: #FFD006; }
-.counter-num { font-size: 28px; font-weight: 800; color: #0a162f; min-width: 48px; text-align: center; }
+.counter-btn:hover { background: #f8d247; border-color: #f8d247; }
+.counter-num { font-size: 28px; font-weight: 800; color: #555859; min-width: 48px; text-align: center; }
 
 /* ── Contact ── */
 .contact-row {
@@ -1041,11 +1041,11 @@ export default {
   padding: 8px 12px;
   font-family: 'Kanit', 'Inter', sans-serif;
   font-size: 14px;
-  color: #0a162f;
+  color: #555859;
   outline: none;
   transition: border-color 0.2s;
 }
-.contact-input:focus { border-color: #FFD006; }
+.contact-input:focus { border-color: #f8d247; }
 
 /* ── Check-in ── */
 .checkin-status-card {
@@ -1063,7 +1063,7 @@ export default {
 }
 .pulse-ring {
   position: absolute; inset: 0;
-  border: 3px solid #FFD006;
+  border: 3px solid #f8d247;
   border-radius: 50%;
   animation: pulse 1.5s ease-out infinite;
 }
@@ -1072,7 +1072,7 @@ export default {
   100% { transform: scale(1.5); opacity: 0; }
 }
 .pulse-dot { font-size: 28px; position: relative; z-index: 1; }
-.checkin-status-text { font-size: 16px; font-weight: 700; color: #0a162f; margin-bottom: 4px; }
+.checkin-status-text { font-size: 16px; font-weight: 700; color: #555859; margin-bottom: 4px; }
 .checkin-coords { font-size: 12px; color: #888; }
 
 .status-badge { padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
@@ -1125,7 +1125,7 @@ export default {
   padding: 10px 12px;
   font-family: 'Kanit', 'Inter', sans-serif;
   font-size: 14px;
-  color: #0a162f;
+  color: #555859;
   resize: none;
   outline: none;
   transition: border-color 0.2s;
@@ -1133,7 +1133,7 @@ export default {
 .completion-note:focus { border-color: #22c55e; }
 
 .evidence-upload {
-  background: #f4f6fa;
+  background: #f7f7f7;
   border: 2px dashed #d0d5e0;
   border-radius: 12px;
   min-height: 160px;
@@ -1143,7 +1143,7 @@ export default {
   cursor: pointer;
   transition: all 0.2s;
 }
-.evidence-upload:hover { border-color: #FFD006; background: #fffbea; }
+.evidence-upload:hover { border-color: #f8d247; background: #fdf6d8; }
 .evidence-placeholder { text-align: center; }
 .evidence-plus { font-size: 40px; color: #bbb; line-height: 1; }
 .evidence-hint { font-size: 14px; color: #aaa; margin-top: 6px; font-weight: 600; }
@@ -1188,10 +1188,10 @@ export default {
   display: flex; align-items: center; justify-content: center;
   font-size: 36px; color: #22c55e; font-weight: 800;
 }
-.success-title { font-size: 26px; font-weight: 800; color: #0a162f; margin-bottom: 8px; }
+.success-title { font-size: 26px; font-weight: 800; color: #555859; margin-bottom: 8px; }
 .success-sub { font-size: 15px; color: #666; margin-bottom: 24px; }
 .success-summary {
-  background: #f4f6fa;
+  background: #f7f7f7;
   border-radius: 12px;
   padding: 16px;
   margin-bottom: 24px;
@@ -1206,12 +1206,12 @@ export default {
 }
 .summary-row:last-child { border-bottom: none; }
 .summary-label { color: #888; }
-.summary-val { font-weight: 700; color: #0a162f; }
+.summary-val { font-weight: 700; color: #555859; }
 
 /* ── Buttons ── */
 .btn-primary-full {
-  background: #0a162f;
-  color: #FFD006;
+  background: #555859;
+  color: #f8d247;
   border: none;
   border-radius: 12px;
   padding: 14px;
@@ -1228,7 +1228,7 @@ export default {
 
 /* ── Footer ── */
 .officer-footer {
-  background: #0a162f;
+  background: #555859;
   color: #6b7280;
   text-align: center;
   padding: 14px;
@@ -1237,14 +1237,75 @@ export default {
 
 /* ── Responsive ── */
 @media (max-width: 640px) {
-  .officer-navbar { padding: 0 14px; }
+  /* Navbar */
+  .officer-navbar { padding: 0 14px; height: 56px; }
+  .on-logo-icon { font-size: 20px; }
   .on-logo-text { font-size: 14px; }
-  .workflow-bar { padding: 12px 10px; gap: 0; overflow-x: auto; }
+  .on-user-role { display: none; }
+  .on-avatar { width: 32px; height: 32px; font-size: 14px; }
+  .on-user-name { font-size: 13px; }
+
+  /* Workflow bar */
+  .workflow-bar { padding: 10px 10px; gap: 0; overflow-x: auto; }
   .wf-label { font-size: 11px; }
+  .wf-circle { width: 28px; height: 28px; font-size: 12px; }
   .wf-line { width: 20px; }
-  .tasks-header { padding: 16px 14px 0; }
-  .task-list, .mobile-content { padding: 14px; }
+
+  /* Task list */
+  .tasks-header { padding: 14px 14px 0; }
+  .tasks-title { font-size: 18px; }
+  .tasks-date { font-size: 12px; }
+  .task-tab { font-size: 12px; padding: 8px 6px; gap: 4px; }
+  .task-tab-count { padding: 1px 6px; font-size: 11px; }
+
+  /* Cards & content */
+  .task-list { padding: 14px; gap: 10px; }
+  .mobile-content { padding: 14px; gap: 10px; }
+  .task-card { padding: 14px; }
+  .task-id { font-size: 14px; }
+  .task-info-row { font-size: 13px; }
+  .btn-accept, .btn-continue { font-size: 13px; padding: 7px 16px; }
+
+  /* Detail/checkin/complete */
+  .detail-header { padding: 12px 14px; gap: 10px; }
+  .detail-title { font-size: 15px; }
+  .detail-id { font-size: 12px; }
+  .info-card { padding: 14px; }
+  .info-card-head { font-size: 13px; margin-bottom: 10px; padding-bottom: 8px; }
+  .info-row { font-size: 13px; }
+  .map-mock-mobile { height: 160px; }
+  .map-mock-large { height: 220px; }
+  .back-btn { font-size: 13px; padding: 5px 10px; }
+
+  /* Grids */
   .needs-grid { grid-template-columns: 1fr 1fr; }
   .outcome-options { grid-template-columns: 1fr 1fr; }
+
+  /* Success */
+  .success-content { padding: 28px 18px; }
+  .success-title { font-size: 22px; }
+  .success-sub { font-size: 14px; }
+
+  /* Footer */
+  .officer-footer { font-size: 11px; padding: 12px; }
+}
+
+@media (max-width: 400px) {
+  /* Collapse logo text on very small phones */
+  .on-logo-text { display: none; }
+
+  /* Workflow: circles only */
+  .wf-label { display: none; }
+  .wf-line { width: 14px; }
+
+  /* Tabs: hide counts */
+  .task-tab-count { display: none; }
+
+  /* Banner */
+  .banner-msg { font-size: 12px; }
+  .banner-btn { font-size: 12px; padding: 5px 10px; }
+
+  /* Outcome grid stacks */
+  .outcome-options { grid-template-columns: 1fr; }
 }
 </style>

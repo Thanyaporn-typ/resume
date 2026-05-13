@@ -156,7 +156,7 @@
         <h2 class="cta-title">พร้อมให้ความช่วยเหลือทันที</h2>
         <p class="cta-sub">หากพบเหตุฉุกเฉินหรือต้องการความช่วยเหลือ กดปุ่มด้านล่างได้เลย</p>
         <button class="btn-hero" @click="currentView = 'form'">
-          <span class="btn-hero-icon">🚨</span> แจ้งเหตุเดี๋ยวนี้
+          <span class="btn-hero-icon">🚨</span> แจ้งเหตุตอนนี้
         </button>
       </section>
     </div>
@@ -427,13 +427,13 @@
     </div>
 
     <!-- Footer -->
-    <!-- <footer class="site-footer">
+    <footer class="site-footer">
       <div class="footer-inner">
-        <span>© 2568 ระบบแจ้งเหตุภัยพิบัติ — กรมป้องกันและบรรเทาสาธารณภัย</span>
-        <span class="footer-sep">|</span>
-        <span>สายด่วน 1784</span>
+        <span>© 2568 ระบบแจ้งเหตุภัยพิบัติ </span>
+        <!-- <span class="footer-sep">|</span>
+        <span>สายด่วน 1784</span> -->
       </div>
-    </footer> -->
+    </footer>
 
   </div>
 </template>
@@ -549,8 +549,8 @@ export default {
 .webapp {
   min-height: 100vh;
   font-family: 'Kanit', 'Inter', sans-serif;
-  background: #f5f6fa;
-  color: #0a162f;
+  background: #f7f7f7;
+  color: #555859;
   display: flex;
   flex-direction: column;
 }
@@ -561,7 +561,7 @@ export default {
   top: 0;
   z-index: 100;
   width: 100%;
-  background: #0a162f;
+  background: #555859;
   box-shadow: 0 2px 16px rgba(0,0,0,0.18);
 }
 
@@ -610,7 +610,7 @@ export default {
 }
 
 .nav-link:hover { color: #fff; background: rgba(255,255,255,0.08); }
-.nav-link.active { color: #0a162f; background: #FFD006; font-weight: 700; }
+.nav-link.active { color: #555859; background: #f8d247; font-weight: 700; }
 
 .nav-right { flex-shrink: 0; }
 
@@ -639,7 +639,7 @@ export default {
 .hero {
   position: relative;
   min-height: 480px;
-  background: linear-gradient(135deg, #0a162f 0%, #0d1a38 40%, #0c2050 100%);
+  background: linear-gradient(135deg, #555859 0%, #6a6c6e 40%, #3d3f40 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -659,12 +659,20 @@ export default {
   padding: 60px 24px;
   max-width: 720px;
 }
+.hero-content .hero-badge { animation: hero-fade-up 0.65s 0.10s cubic-bezier(0.22,1,0.36,1) both; }
+.hero-content .hero-title { animation: hero-fade-up 0.65s 0.24s cubic-bezier(0.22,1,0.36,1) both; }
+.hero-content .hero-sub   { animation: hero-fade-up 0.65s 0.38s cubic-bezier(0.22,1,0.36,1) both; }
+.hero-content .btn-hero   { animation: hero-fade-up 0.65s 0.52s cubic-bezier(0.22,1,0.36,1) both; }
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
 .hero-badge {
   display: inline-block;
-  background: rgba(255,208,6,0.15);
-  border: 1px solid rgba(255,208,6,0.4);
-  color: #FFD006;
+  background: rgba(248,210,71,0.15);
+  border: 1px solid rgba(248,210,71,0.4);
+  color: #f8d247;
   font-size: 13px;
   font-weight: 600;
   padding: 6px 18px;
@@ -689,8 +697,8 @@ export default {
 }
 
 .btn-hero {
-  background: #FFD006;
-  color: #0a162f;
+  background: #f8d247;
+  color: #555859;
   border: none;
   border-radius: 14px;
   padding: 16px 40px;
@@ -701,12 +709,12 @@ export default {
   align-items: center;
   gap: 10px;
   transition: transform 0.15s, box-shadow 0.15s;
-  box-shadow: 0 4px 24px rgba(255,208,6,0.4);
+  box-shadow: 0 4px 24px rgba(248,210,71,0.4);
 }
 
 .btn-hero:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(255,208,6,0.5);
+  box-shadow: 0 8px 32px rgba(248,210,71,0.5);
 }
 
 .btn-hero-icon { font-size: 20px; }
@@ -732,7 +740,7 @@ export default {
 .stat-num {
   font-size: 32px;
   font-weight: 800;
-  color: #0a162f;
+  color: #555859;
   line-height: 1;
   margin-bottom: 6px;
 }
@@ -761,7 +769,7 @@ export default {
 .section-title {
   font-size: 28px;
   font-weight: 800;
-  color: #0a162f;
+  color: #555859;
   position: relative;
   padding-bottom: 12px;
 }
@@ -773,7 +781,7 @@ export default {
   bottom: 0;
   width: 48px;
   height: 4px;
-  background: #FFD006;
+  background: #f8d247;
   border-radius: 2px;
 }
 
@@ -797,7 +805,7 @@ export default {
 .banner-card:hover { transform: translateY(-4px); }
 
 .banner-1 { background: linear-gradient(135deg, #e53e3e, #c53030); }
-.banner-2 { background: linear-gradient(135deg, #0e2448, #0c2050); }
+.banner-2 { background: linear-gradient(135deg, #555859, #3d3f40); }
 .banner-3 { background: linear-gradient(135deg, #2d8b4e, #1a5c30); }
 
 .banner-tag {
@@ -827,7 +835,7 @@ export default {
 /* Steps */
 /* ── How It Works ── */
 .how-section {
-  background: linear-gradient(135deg, #060e1e 0%, #0a162f 60%, #0d1a38 100%);
+  background: linear-gradient(135deg, #3d3f40 0%, #555859 60%, #6a6c6e 100%);
   padding: 0 !important;
   max-width: 100% !important;
   position: relative;
@@ -836,7 +844,7 @@ export default {
 .how-section::before {
   content: '';
   position: absolute; inset: 0;
-  background-image: radial-gradient(rgba(255,208,6,0.06) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(248,210,71,0.06) 1px, transparent 1px);
   background-size: 32px 32px;
   pointer-events: none;
 }
@@ -849,9 +857,9 @@ export default {
 }
 .how-eyebrow {
   display: inline-block;
-  background: rgba(255,208,6,0.15);
-  color: #FFD006;
-  border: 1px solid rgba(255,208,6,0.3);
+  background: rgba(248,210,71,0.15);
+  color: #f8d247;
+  border: 1px solid rgba(248,210,71,0.3);
   border-radius: 999px;
   padding: 5px 18px;
   font-size: 12px;
@@ -895,13 +903,13 @@ export default {
 .step-bubble {
   width: 52px; height: 52px;
   border-radius: 50%;
-  background: #FFD006;
-  color: #0a162f;
+  background: #f8d247;
+  color: #555859;
   font-size: 18px;
   font-weight: 800;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 0 0 6px rgba(255,208,6,0.15), 0 0 0 12px rgba(255,208,6,0.06);
+  box-shadow: 0 0 0 6px rgba(248,210,71,0.15), 0 0 0 12px rgba(248,210,71,0.06);
   position: relative;
   z-index: 1;
 }
@@ -909,7 +917,7 @@ export default {
 .step-line {
   flex: 1;
   height: 2px;
-  background: linear-gradient(90deg, rgba(255,208,6,0.6), rgba(255,208,6,0.2));
+  background: linear-gradient(90deg, rgba(248,210,71,0.6), rgba(248,210,71,0.2));
   margin-left: 4px;
 }
 
@@ -926,10 +934,10 @@ export default {
 }
 
 .step-card:hover .step-icon-box {
-  background: rgba(255,208,6,0.15);
-  border-color: rgba(255,208,6,0.4);
+  background: rgba(248,210,71,0.15);
+  border-color: rgba(248,210,71,0.4);
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(255,208,6,0.15);
+  box-shadow: 0 12px 32px rgba(248,210,71,0.15);
 }
 
 .step-title {
@@ -947,7 +955,7 @@ export default {
 /* CTA */
 .cta-section {
   text-align: center;
-  background: #0a162f;
+  background: #555859;
   max-width: 100%;
   padding: 64px 32px;
   margin: 0;
@@ -1002,12 +1010,12 @@ export default {
 .page-title {
   font-size: 20px;
   font-weight: 700;
-  color: #0a162f;
+  color: #555859;
   margin: 0;
 }
 
 .btn-new {
-  background: #FFD006;
+  background: #f8d247;
   border: none;
   border-radius: 8px;
   padding: 9px 18px;
@@ -1046,7 +1054,7 @@ export default {
   padding: 16px 24px;
   font-size: 15px;
   font-weight: 700;
-  color: #0a162f;
+  color: #555859;
 }
 
 /* Map */
@@ -1147,7 +1155,7 @@ export default {
   overflow: hidden;
 }
 
-.upload-area:hover { border-color: #FFD006; background: #fffdf0; }
+.upload-area:hover { border-color: #f8d247; background: #fdf6d8; }
 
 .upload-placeholder { text-align: center; padding: 20px; }
 .upload-big-icon { font-size: 40px; margin-bottom: 10px; }
@@ -1160,7 +1168,7 @@ export default {
   text-align: center;
   padding: 8px;
   font-size: 13px;
-  color: #FFD006;
+  color: #f8d247;
   cursor: pointer;
   border-top: 1px solid #f0f0f0;
 }
@@ -1228,9 +1236,9 @@ export default {
 }
 
 .chip-inner.checked {
-  border-color: #FFD006;
-  background: #fffbe6;
-  color: #0a162f;
+  border-color: #f8d247;
+  background: #fdf6d8;
+  color: #555859;
   font-weight: 600;
 }
 
@@ -1256,14 +1264,14 @@ export default {
   font-family: inherit;
 }
 
-.counter-btn:hover { border-color: #FFD006; background: #fffbe6; }
+.counter-btn:hover { border-color: #f8d247; background: #fdf6d8; }
 
 .counter-display {
   min-width: 60px;
   text-align: center;
 }
 
-.counter-num { font-size: 28px; font-weight: 800; color: #0a162f; }
+.counter-num { font-size: 28px; font-weight: 800; color: #555859; }
 .counter-unit { font-size: 13px; color: #aaa; margin-left: 4px; }
 
 .field-textarea {
@@ -1279,7 +1287,7 @@ export default {
   transition: border-color 0.15s;
 }
 
-.field-textarea:focus { border-color: #FFD006; }
+.field-textarea:focus { border-color: #f8d247; }
 
 .btn-thaid-web {
   display: flex;
@@ -1289,7 +1297,7 @@ export default {
   width: calc(100% - 48px);
   margin: 20px 24px 0;
   padding: 13px;
-  background: #0e2448;
+  background: #555859;
   color: #fff;
   border: none;
   border-radius: 10px;
@@ -1304,7 +1312,7 @@ export default {
 
 .thaid-badge {
   background: #fff;
-  color: #0e2448;
+  color: #555859;
   font-size: 12px;
   padding: 2px 8px;
   border-radius: 4px;
@@ -1351,7 +1359,7 @@ export default {
   transition: border-color 0.15s;
 }
 
-.field-input:focus { border-color: #FFD006; }
+.field-input:focus { border-color: #f8d247; }
 .field-input::placeholder { color: #bbb; }
 
 .btn-submit-web {
@@ -1359,7 +1367,7 @@ export default {
   width: calc(100% - 48px);
   margin: 16px 24px 24px;
   padding: 15px;
-  background: #0a162f;
+  background: #555859;
   color: #fff;
   border: none;
   border-radius: 12px;
@@ -1370,7 +1378,7 @@ export default {
   transition: background 0.2s;
 }
 
-.btn-submit-web:hover { background: #2d2d4e; }
+.btn-submit-web:hover { background: #3d3f40; }
 
 /* ══ Confirmation ══ */
 .page-confirm {
@@ -1399,7 +1407,7 @@ export default {
 .confirm-title {
   font-size: 36px;
   font-weight: 800;
-  color: #0a162f;
+  color: #555859;
   margin-bottom: 12px;
 }
 
@@ -1411,7 +1419,7 @@ export default {
 }
 
 .case-box {
-  background: #0a162f;
+  background: #555859;
   border-radius: 16px;
   padding: 28px 32px;
   margin-bottom: 32px;
@@ -1428,7 +1436,7 @@ export default {
 .case-box-num {
   font-size: 40px;
   font-weight: 800;
-  color: #FFD006;
+  color: #f8d247;
   margin-bottom: 8px;
 }
 
@@ -1539,8 +1547,8 @@ export default {
   transition: all 0.15s;
 }
 
-.filter-tab:hover { border-color: #FFD006; }
-.filter-tab.active { background: #FFD006; border-color: #FFD006; color: #0a162f; }
+.filter-tab:hover { border-color: #f8d247; }
+.filter-tab.active { background: #f8d247; border-color: #f8d247; color: #555859; }
 
 .tab-dot {
   width: 8px;
@@ -1606,7 +1614,7 @@ export default {
 
 .case-id-cell {
   font-weight: 700;
-  color: #0a162f;
+  color: #555859;
 }
 
 .urgency-badge {
@@ -1654,7 +1662,7 @@ export default {
   transition: all 0.15s;
 }
 
-.btn-detail:hover { border-color: #FFD006; color: #0a162f; }
+.btn-detail:hover { border-color: #f8d247; color: #555859; }
 
 .empty-state {
   padding: 60px 20px;
@@ -1675,7 +1683,7 @@ export default {
 .progress-title {
   font-size: 15px;
   font-weight: 700;
-  color: #0a162f;
+  color: #555859;
   margin-bottom: 20px;
 }
 
@@ -1714,14 +1722,14 @@ export default {
 .progress-count {
   font-size: 13px;
   font-weight: 700;
-  color: #0a162f;
+  color: #555859;
   width: 20px;
   text-align: right;
 }
 
 /* ══ Footer ══ */
 .site-footer {
-  background: #0a162f;
+  background: #555859;
   border-top: 1px solid rgba(255,255,255,0.06);
   padding: 18px 32px;
 }
@@ -1755,13 +1763,13 @@ export default {
 }
 
 .navbar-toggler:focus {
-  box-shadow: 0 0 0 3px rgba(255,208,6,0.35);
+  box-shadow: 0 0 0 3px rgba(248,210,71,0.35);
   outline: none;
 }
 
 .navbar-toggler[aria-expanded="true"] {
-  background: rgba(255,208,6,0.1);
-  border-color: rgba(255,208,6,0.4);
+  background: rgba(248,210,71,0.1);
+  border-color: rgba(248,210,71,0.4);
 }
 
 .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
@@ -1772,8 +1780,8 @@ export default {
 .mobile-drawer {
   width: 100%;          /* ทำให้เต็มแถวใน Bootstrap flex navbar */
   flex-shrink: 0;
-  background: linear-gradient(180deg, #0a162f 0%, #0d1a38 100%);
-  border-top: 2px solid rgba(255,208,6,0.25);
+  background: linear-gradient(180deg, #555859 0%, #6a6c6e 100%);
+  border-top: 2px solid rgba(248,210,71,0.25);
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -1796,8 +1804,8 @@ export default {
 .drawer-user-avatar {
   width: 38px;
   height: 38px;
-  background: rgba(255,208,6,0.12);
-  border: 1.5px solid rgba(255,208,6,0.3);
+  background: rgba(248,210,71,0.12);
+  border: 1.5px solid rgba(248,210,71,0.3);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1897,13 +1905,13 @@ export default {
 .drawer-link:hover .drawer-link-arrow { color: rgba(255,255,255,0.5); transform: translateX(2px); }
 
 .drawer-link.active {
-  background: rgba(255,208,6,0.1);
-  border-color: rgba(255,208,6,0.2);
+  background: rgba(248,210,71,0.1);
+  border-color: rgba(248,210,71,0.2);
 }
-.drawer-link.active .drawer-link-icon { background: rgba(255,208,6,0.15); }
-.drawer-link.active .drawer-link-label { color: #FFD006; font-weight: 700; }
-.drawer-link.active .drawer-link-desc { color: rgba(255,208,6,0.5); }
-.drawer-link.active .drawer-link-arrow { color: #FFD006; }
+.drawer-link.active .drawer-link-icon { background: rgba(248,210,71,0.15); }
+.drawer-link.active .drawer-link-label { color: #f8d247; font-weight: 700; }
+.drawer-link.active .drawer-link-desc { color: rgba(248,210,71,0.5); }
+.drawer-link.active .drawer-link-arrow { color: #f8d247; }
 
 .drawer-footer {
   padding: 4px 12px 20px;
@@ -1916,15 +1924,15 @@ export default {
   gap: 8px;
   width: 100%;
   padding: 15px;
-  background: #FFD006;
-  color: #0a162f;
+  background: #f8d247;
+  color: #555859;
   border: none;
   border-radius: 12px;
   font-size: 15px;
   font-weight: 800;
   cursor: pointer;
   font-family: inherit;
-  box-shadow: 0 4px 20px rgba(255,208,6,0.3);
+  box-shadow: 0 4px 20px rgba(248,210,71,0.3);
   transition: opacity 0.15s, transform 0.15s;
 }
 
@@ -2033,7 +2041,7 @@ export default {
     width: 2px;
     height: auto;
     min-height: 24px;
-    background: linear-gradient(180deg, rgba(255,208,6,0.5), rgba(255,208,6,0.08));
+    background: linear-gradient(180deg, rgba(248,210,71,0.5), rgba(248,210,71,0.08));
     margin-left: 0;
     margin-top: 6px;
     border-radius: 1px;
