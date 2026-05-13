@@ -21,7 +21,6 @@
                 </div>
             </div>
 
-
             <div class="card-body">
                 <div class="mb-4">
                     <strong>รอบปัจจุบัน:</strong> {{ roundTitles[currentRound] || 'รอบ ' + currentRound }}
@@ -32,8 +31,8 @@
                         <input type="text" class="form-control" v-model="roundTitles[currentRound]"
                             placeholder="ชื่อรอบ เช่น รอบประจำสัปดาห์ 16-22 ก.ค." />
                     </div>
-                    <div class="col-md-4 text-end">
-                        <button class="btn btn-outline-success" @click="exportCSV(currentRound)">
+                    <div class="col-md-4 text-md-end mt-2 mt-md-0">
+                        <button class="btn btn-outline-success w-100 w-md-auto" @click="exportCSV(currentRound)">
                             <i class="fas fa-file-csv"></i> ดาวน์โหลด CSV รอบนี้
                         </button>
                     </div>
@@ -80,6 +79,7 @@
                         </button>
                     </div>
                 </div>
+
                 <!-- ตารางออเดอร์ -->
                 <div class="accordion mt-4" id="roundAccordion">
                     <div class="accordion-item" v-for="(orders, round) in rounds" :key="round">
@@ -94,7 +94,8 @@
                             :class="{ show: round === currentRound }" :aria-labelledby="'heading-' + round"
                             data-bs-parent="#roundAccordion">
                             <div class="accordion-body p-0">
-                                <div class="table-responsive">
+                                <!-- DESKTOP TABLE -->
+                                <div class="table-responsive d-none d-md-block">
                                     <table class="table table-bordered table-striped text-center align-middle mb-0">
                                         <thead class="table-light">
                                             <tr>
@@ -114,8 +115,14 @@
                                             </tr>
                                             <tr v-for="(order, index) in orders" :key="index">
                                                 <td>{{ index + 1 }}</td>
-                                                <td><input v-model="order.product_name"
-                                                        class="form-control form-control-sm" /></td>
+                                                <td>
+                                                    <select v-model="order.product_name" class="form-select form-select-sm">
+                                                        <option disabled value="">-- กรุณาเลือกสินค้า --</option>
+                                                        <option v-for="item in products" :key="item.id" :value="item.name">
+                                                            {{ item.name }}
+                                                        </option>
+                                                    </select>
+                                                </td>
                                                 <td><input v-model.number="order.quantity_kg" type="number" min="1"
                                                         class="form-control form-control-sm" /></td>
                                                 <td><input v-model="order.customer_name"
@@ -128,7 +135,119 @@
                                                         <option value="ชำระแล้ว">ชำระแล้ว</option>
                                                     </select>
                                                 </td>
-                                                <td>{{ order.quantity_kg * pricePerKg | currency }}</td>
+                                                <td>{{ (parseFloat(order.quantity_kg) || 0) * pricePerKg | currency }}</td>
+                                                <td class="d-flex gap-1 justify-content-center flex-wrap">
+                                                    <button class="btn btn-sm btn-outline-success"
+                                                        @click="updateOrder(order)">บันทึก</button>
+                                                    <button class="btn btn-sm btn-outline-danger"
+                                                        @click="deleteOrder(round, index, order.id)">ลบ</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <!-- MOBILE STACKED CARD -->
+                                <div class="d-block d-md-none">
+                                    <div v-if="orders.length === 0" class="text-center py-3 text-muted">ยังไม่มีออเดอร์
+                                    </div>
+                                    <div v-for="(order, index) in orders" :key="index" class="card mb-3">
+                                        <div class="card-body p-3">
+                                            <h6 class="text-muted mb-2">#{{ index + 1 }}</h6>
+
+                                            <div class="mb-2">
+                                                <label class="form-label mb-0">สินค้า</label>
+                                                <select v-model="order.product_name" class="form-select form-select-sm">
+                                                    <option disabled value="">-- กรุณาเลือกสินค้า --</option>
+                                                    <option v-for="item in products" :key="item.id" :value="item.name">
+                                                        {{ item.name }}
+                                                    </option>
+                                                </select>
+                                            </div>
+
+                                            <div class="mb-2">
+                                                <label class="form-label mb-0">จำนวน (กก.)</label>
+                                                <input v-model.number="order.quantity_kg" type="number" min="1"
+                                                    class="form-control form-control-sm" />
+                                            </div>
+
+                                            <div class="mb-2">
+                                                <label class="form-label mb-0">ชื่อลูกค้า</label>
+                                                <input v-model="order.customer_name" class="form-control form-control-sm" />
+                                            </div>
+
+                                            <div class="mb-2">
+                                                <label class="form-label mb-0">ที่อยู่จัดส่ง</label>
+                                                <input v-model="order.delivery_address"
+                                                    class="form-control form-control-sm" />
+                                            </div>
+
+                                            <div class="mb-2">
+                                                <label class="form-label mb-0">สถานะ</label>
+                                                <select v-model="order.status" class="form-select form-select-sm">
+                                                    <option value="ยังไม่ชำระ">ยังไม่ชำระ</option>
+                                                    <option value="ชำระแล้ว">ชำระแล้ว</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label class="form-label mb-0">รวม (บาท)</label>
+                                                <div class="text-muted">
+                                                    {{ (parseFloat(order.quantity_kg) || 0) * pricePerKg | currency }}
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex gap-2">
+                                                <button class="btn btn-sm btn-outline-success w-100"
+                                                    @click="updateOrder(order)">บันทึก</button>
+                                                <button class="btn btn-sm btn-outline-danger w-100"
+                                                    @click="deleteOrder(round, index, order.id)">ลบ</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="table-responsive">
+                                    <table class="table table-bordered table-striped text-center align-middle mb-0">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>สินค้า</th>
+                                                <th>จำนวน (กก.)</th>
+                                                <th>ลูกค้า</th>
+                                                <th>ที่อยู่จัดส่ง</th>
+                                                <th>สถานะ</th>
+                                                <th>รวม (บาท)</th>
+                                                <th>จัดการ</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-if="orders.length === 0">
+                                                <td colspan="8">ยังไม่มีออเดอร์</td>
+                                            </tr>
+                                            <tr v-for="(order, index) in orders" :key="index">
+                                                <td>{{ index + 1 }}</td>
+                                                <td>
+                                                    <select v-model="order.product_name" class="form-select form-select-sm">
+                                                        <option disabled value="">-- กรุณาเลือกสินค้า --</option>
+                                                        <option v-for="item in products" :key="item.id" :value="item.name">
+                                                            {{ item.name }}
+                                                        </option>
+                                                    </select>
+                                                </td>
+                                                <td><input v-model.number="order.quantity_kg" type="number" min="1"
+                                                        class="form-control form-control-sm" /></td>
+                                                <td><input v-model="order.customer_name"
+                                                        class="form-control form-control-sm" /></td>
+                                                <td><input v-model="order.delivery_address"
+                                                        class="form-control form-control-sm" /></td>
+                                                <td>
+                                                    <select v-model="order.status" class="form-select form-select-sm">
+                                                        <option value="ยังไม่ชำระ">ยังไม่ชำระ</option>
+                                                        <option value="ชำระแล้ว">ชำระแล้ว</option>
+                                                    </select>
+                                                </td>
+                                                <td>{{ (parseFloat(order.quantity_kg) || 0) * pricePerKg | currency }}</td>
                                                 <td class="d-flex gap-1 justify-content-center flex-wrap">
                                                     <button class="btn btn-sm btn-outline-success"
                                                         @click="updateOrder(order)">
@@ -142,12 +261,11 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
                 </div>
-
 
                 <div class="alert alert-info mt-4">
                     <strong>ยอดรวมรอบ {{ currentRound }}:</strong> {{ totalKg }} กก. /
@@ -176,15 +294,18 @@ export default {
                 status: 'ยังไม่ชำระ',
             },
             products: [
-                { id: 1, name: 'ปลาส้มปลาจีน' },
-                { id: 2, name: 'ปลาส้มปลาตะเพียน' },
+                { id: 1, name: 'ปลาร้า' },
+                { id: 2, name: 'ปลาส้มจีน' },
                 { id: 3, name: 'ปลาส้มแผ่น' },
             ],
         };
     },
     computed: {
         totalKg() {
-            return (this.rounds[this.currentRound] || []).reduce((sum, o) => sum + o.quantity_kg, 0);
+            return (this.rounds[this.currentRound] || []).reduce((sum, o) => {
+                const qty = parseFloat(o.quantity_kg) || 0;
+                return sum + qty;
+            }, 0);
         },
         totalPrice() {
             return this.totalKg * this.pricePerKg;
@@ -221,12 +342,24 @@ export default {
             this.$set(this.roundTitles, data.id, data.title);
         },
         async addOrder() {
+            const { product, kg, customer, address } = this.newOrder;
+
+            // ตรวจสอบค่าว่าง
+            if (!product || !kg || !customer || !address) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'ข้อมูลไม่ครบ',
+                    text: 'กรุณากรอกข้อมูลให้ครบทุกช่องก่อนเพิ่มออเดอร์'
+                });
+                return;
+            }
+
             const order = {
                 round_id: this.currentRound,
-                product_name: this.newOrder.product,
-                quantity_kg: this.newOrder.kg,
-                customer_name: this.newOrder.customer,
-                delivery_address: this.newOrder.address,
+                product_name: product,
+                quantity_kg: kg,
+                customer_name: customer,
+                delivery_address: address,
                 status: this.newOrder.status,
             };
 
@@ -260,13 +393,26 @@ export default {
             }
         },
 
+
         async updateOrder(order) {
+            const { product_name, quantity_kg, customer_name, delivery_address, status } = order;
+
+            // ตรวจสอบค่าว่างหรือค่าไม่สมเหตุสมผล
+            if (!product_name || !quantity_kg || !customer_name || !delivery_address) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'ข้อมูลไม่ครบ',
+                    text: 'กรุณากรอกข้อมูลให้ครบทุกช่องก่อนบันทึก'
+                });
+                return;
+            }
+
             const payload = {
-                product_name: order.product_name,
-                quantity_kg: order.quantity_kg,
-                customer_name: order.customer_name,
-                delivery_address: order.delivery_address,
-                status: order.status
+                product_name,
+                quantity_kg,
+                customer_name,
+                delivery_address,
+                status
             };
 
             try {
@@ -298,6 +444,7 @@ export default {
                 console.error(err);
             }
         },
+
 
         async deleteOrder(round, index, id) {
             try {

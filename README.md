@@ -1,4 +1,4 @@
-# nilafunky
+# app
 
 ## Project setup
 ```
