@@ -26,7 +26,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 git add .
-git commit -m "add : thai-id logo"
+git commit -m "edit : ico"
 git push
 
 npm run build
