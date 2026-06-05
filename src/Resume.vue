@@ -75,8 +75,8 @@
               <a href="tel:0860299113" class="contact-pill">
                 <span class="cpill-icon">📞</span> 086-029-9113
               </a>
-              <a href="https://foamtyp.wixsite.com/my-site-3" target="_blank" class="contact-pill">
-                <span class="cpill-icon">🔗</span> Portfolio
+              <a href="https://drive.google.com/file/d/1kyUa7YvfYctiGwU5-yRYWHBs0QrTW-HD/preview" target="_blank" class="contact-pill">
+                <span class="cpill-icon">📄</span> Portfolio PDF
               </a>
             </div>
           </div>
@@ -106,13 +106,13 @@
               <span v-for="s in backendSkills" :key="s" class="skill-pill">{{ s }}</span>
             </div>
           </div>
-          <div class="skill-card">
+          <!-- <div class="skill-card">
             <div class="skill-card-icon">🛠</div>
             <h3>Tools & Others</h3>
             <div class="skill-pills">
               <span v-for="s in toolSkills" :key="s" class="skill-pill">{{ s }}</span>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
@@ -182,7 +182,7 @@
           <div class="contact-card">
             <div class="cc-icon">🌐</div>
             <div class="cc-label">Portfolio</div>
-            <a href="https://foamtyp.wixsite.com/my-site-3" target="_blank" class="cc-value">View Portfolio →</a>
+            <a href="https://drive.google.com/file/d/1kyUa7YvfYctiGwU5-yRYWHBs0QrTW-HD/preview" target="_blank" class="cc-value">View Portfolio PDF →</a>
           </div>
         </div>
       </div>
@@ -686,7 +686,7 @@ export default {
 /* ── Skills ── */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 }
 
