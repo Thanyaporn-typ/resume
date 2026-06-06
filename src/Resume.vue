@@ -61,7 +61,7 @@
             </p>
             <div class="about-stats">
               <div class="stat">
-                <div class="stat-num">6+</div>
+                <div class="stat-num">7+</div>
                 <div class="stat-label">Years Experience</div>
               </div>
               <div class="stat">
@@ -176,6 +176,30 @@
       </div>
     </section>
 
+    <!-- ══ Languages ══ -->
+    <section class="section" id="languages">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Communication</span>
+          <h2 class="section-title">Languages</h2>
+        </div>
+        <div class="lang-grid">
+          <div v-for="(lang, i) in languages" :key="i" class="lang-card">
+            <div class="lang-top">
+              <span class="lang-flag">{{ lang.flag }}</span>
+              <div>
+                <div class="lang-name">{{ lang.name }}</div>
+                <div class="lang-level">{{ lang.level }}</div>
+              </div>
+            </div>
+            <div class="lang-bar">
+              <div class="lang-bar-fill" :style="{ width: lang.percent + '%' }"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ══ Contact ══ -->
     <section class="section contact-section" id="contact">
       <div class="container">
@@ -276,6 +300,10 @@ export default {
             'Support digital transformation initiatives across corporate and investor communication channels.',
           ],
         },
+      ],
+      languages: [
+        { flag: '🇹🇭', name: 'Thai', level: 'Native', percent: 100 },
+        { flag: '🇬🇧', name: 'English', level: 'Intermediate', percent: 55 },
       ],
       educations: [
         {
@@ -1052,6 +1080,70 @@ export default {
   line-height: 1.5;
 }
 
+/* ── Languages ── */
+.lang-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.lang-card {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 16px;
+  padding: 24px 26px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+
+.lang-card:hover {
+  border-color: var(--gold-border);
+  box-shadow: 0 8px 28px rgba(245, 196, 0, 0.12);
+  transform: translateY(-3px);
+}
+
+.lang-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.lang-flag {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.lang-name {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #111;
+}
+
+.lang-level {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #aaa;
+  margin-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.lang-bar {
+  height: 5px;
+  background: #f0f0f0;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.lang-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-2));
+}
+
 /* ── Contact ── */
 .contact-section {
   background: #060606;
@@ -1191,6 +1283,10 @@ export default {
   }
 
   .edu-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .lang-grid {
     grid-template-columns: 1fr;
   }
 
