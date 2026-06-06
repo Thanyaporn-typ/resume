@@ -14,6 +14,7 @@
     <!-- ══ Hero ══ -->
     <section class="hero" id="home">
       <div class="hero-bg">
+        <div class="hero-mesh"></div>
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
       </div>
@@ -54,9 +55,9 @@
           </div>
           <div class="about-info">
             <p class="about-desc">
-              I am a Full Stack Developer who is passionate about building modern, scalable, and user-friendly web
-              applications. I enjoy working on projects that require both creative and analytical thinking, with a strong
-              focus on user experience, performance, and system efficiency.
+              I am a Full Stack Developer passionate about building solutions that combine creativity and problem-solving.
+              I enjoy working on projects that challenge both technical and analytical skills, while always focusing on
+              delivering the best user experience.
             </p>
             <div class="about-stats">
               <div class="stat">
@@ -75,7 +76,7 @@
               <a href="tel:0860299113" class="contact-pill">
                 <span class="cpill-icon">📞</span> 086-029-9113
               </a>
-              <a href="https://drive.google.com/file/d/1kyUa7YvfYctiGwU5-yRYWHBs0QrTW-HD/preview" target="_blank" class="contact-pill">
+              <a href="https://drive.google.com/file/d/1VQnuzzaCurbwDADazQbAzf0rEHNpcNX6/view?usp=drive_link" target="_blank" class="contact-pill">
                 <span class="cpill-icon">📄</span> Portfolio PDF
               </a>
             </div>
@@ -106,13 +107,27 @@
               <span v-for="s in backendSkills" :key="s" class="skill-pill">{{ s }}</span>
             </div>
           </div>
-          <!-- <div class="skill-card">
+          <div class="skill-card">
+            <div class="skill-card-icon">🔗</div>
+            <h3>Automation & Integration</h3>
+            <div class="skill-pills">
+              <span v-for="s in automationSkills" :key="s" class="skill-pill">{{ s }}</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-card-icon">🗄️</div>
+            <h3>Database</h3>
+            <div class="skill-pills">
+              <span v-for="s in databaseSkills" :key="s" class="skill-pill">{{ s }}</span>
+            </div>
+          </div>
+          <div class="skill-card">
             <div class="skill-card-icon">🛠</div>
-            <h3>Tools & Others</h3>
+            <h3>Tools & Workflow</h3>
             <div class="skill-pills">
               <span v-for="s in toolSkills" :key="s" class="skill-pill">{{ s }}</span>
             </div>
-          </div> -->
+          </div>
         </div>
       </div>
     </section>
@@ -182,7 +197,7 @@
           <div class="contact-card">
             <div class="cc-icon">🌐</div>
             <div class="cc-label">Portfolio</div>
-            <a href="https://drive.google.com/file/d/1kyUa7YvfYctiGwU5-yRYWHBs0QrTW-HD/preview" target="_blank" class="cc-value">View Portfolio PDF →</a>
+            <a href="https://drive.google.com/file/d/1VQnuzzaCurbwDADazQbAzf0rEHNpcNX6/view?usp=drive_link" target="_blank" class="cc-value">View Portfolio PDF →</a>
           </div>
         </div>
       </div>
@@ -209,39 +224,44 @@ export default {
         { id: 'education', label: 'Education' },
         { id: 'contact', label: 'Contact' },
       ],
-      frontendSkills: ['HTML / HTML5', 'CSS', 'JavaScript', 'Vue.js', 'Nuxt 3', 'BootstrapVue', 'Vuetify.js', 'Responsive Design'],
-      backendSkills: ['Node.js', 'PHP', 'Python', 'RESTful API', 'MySQL', 'PostgreSQL'],
-      toolSkills: ['Git', 'VS Code', 'Postman', 'Figma', 'SEO Optimization'],
+      frontendSkills: ['HTML5', 'CSS3 / SCSS', 'JavaScript (ES6+)', 'Vue.js', 'Nuxt 3', 'BootstrapVue', 'Vuetify.js', 'Responsive Web Design', 'SEO Optimization'],
+      backendSkills: ['Node.js', 'PHP', 'Python', 'RESTful API Development', 'API Integration', 'Authentication & Authorization'],
+      automationSkills: ['Zapier', 'Zapier Webhooks', 'LINE Messaging API', 'Webhook Integration', 'Third-Party API Integration'],
+      databaseSkills: ['MySQL', 'PostgreSQL'],
+      toolSkills: ['Git / GitHub / GitLab', 'Agile / Scrum', 'CMS Development', 'Performance Optimization'],
       experiences: [
         {
           period: 'April 2019 – August 2020',
           title: 'Front-End Web Developer',
           company: 'Delta Network Solution',
           details: [
-            'Designed, prototyped, and developed web applications using PHP, HTML, CSS, and JavaScript.',
-            'Developed responsive and user-friendly website interfaces.',
-            'Collaborated with development teams to implement front-end functionality and improve user experience.',
+            'Developed and maintained web applications using PHP, HTML, CSS, and JavaScript.',
+            'Created responsive and user-friendly interfaces to improve usability across devices.',
+            'Collaborated with designers and developers to deliver functional and visually engaging web solutions.',
+            'Participated in website planning, prototyping, and front-end implementation.',
           ],
         },
         {
-          period: 'September 2020 – 2021',
+          period: 'September 2020 – October 2021',
           title: 'Front-End Engineer',
           company: 'My Platform',
           details: [
-            'Developed front-end projects and connected APIs for the My Platform website.',
-            'Built responsive web applications using BootstrapVue, Vuetify.js, HTML, CSS, and JavaScript.',
-            'Integrated APIs and improved front-end functionality and performance.',
+            'Developed front-end features and integrated APIs for the My Platform ecosystem.',
+            'Built responsive web applications using Vue.js, BootstrapVue, Vuetify.js, HTML, CSS, and JavaScript.',
+            'Improved application performance and user experience through optimized front-end architecture.',
+            'Worked closely with back-end teams to ensure seamless API integration.',
           ],
         },
         {
           period: 'November 2021 – November 2024',
-          title: 'Front-End Web Developer & Back-End Developer',
+          title: 'Front-End & Back-End Developer',
           company: 'SiamSquared Technologies (Thailand) Co., Ltd.',
           details: [
-            'Developed API-connected front-end platform projects, admin consoles, and responsive websites using Vue.js and Nuxt 3.',
-            'Designed and developed RESTful APIs connected to MySQL databases using Node.js, PHP, and Python.',
-            'Built and maintained both front-end and back-end systems for web applications.',
-            'Improved application performance, responsiveness, and scalability.',
+            'Developed enterprise platforms, admin systems, and responsive websites using Vue.js and Nuxt 3.',
+            'Designed and implemented RESTful APIs using Node.js, PHP, and Python.',
+            'Managed MySQL databases and developed scalable back-end services.',
+            'Maintained full-stack web applications with a focus on performance, reliability, and scalability.',
+            'Collaborated across teams to deliver end-to-end digital solutions.',
           ],
         },
         {
@@ -249,11 +269,11 @@ export default {
           title: 'Full Stack Developer',
           company: 'Origin Property',
           details: [
-            'Responsible for full-stack development and maintenance of corporate and investor relations platforms.',
-            'Developed and maintained corporate websites, investor relations systems, and back-office platforms for Origin Property and Britania Investor Relations.',
-            'Built responsive and multilingual web applications using Vue.js, Node.js, PostgreSQL, and RESTful APIs.',
-            'Managed APIs, database systems, dynamic content management, and administrative tools.',
-            'Improved website performance, SEO optimization, security, and user experience.',
+            'Lead the development and maintenance of corporate, investor relations, and back-office platforms.',
+            'Develop responsive and multilingual web applications using Vue.js, Node.js, PostgreSQL, and RESTful APIs.',
+            'Manage API integrations, database architecture, content management systems, and administrative tools.',
+            'Enhance website performance, SEO, security, and overall user experience.',
+            'Support digital transformation initiatives across corporate and investor communication channels.',
           ],
         },
       ],
@@ -298,9 +318,24 @@ export default {
 }
 
 .page {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  color: #1a1a1a;
-  background: #0d0d0d;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  color: #e8e8e8;
+  background: #080808;
+
+  --gold: #f5c400;
+  --gold-2: #f5a623;
+  --gold-dim: rgba(245, 196, 0, 0.12);
+  --gold-border: rgba(245, 196, 0, 0.28);
+  --gold-glow: rgba(245, 196, 0, 0.18);
+  --bg: #080808;
+  --bg-dark: #0e0e0e;
+  --bg-card: #141414;
+  --bg-card-2: #191919;
+  --bg-light: #f9f8f6;
+  --border: #1e1e1e;
+  --text: #e8e8e8;
+  --text-dim: #909090;
+  --text-muted: #555;
 }
 
 /* ── Navbar ── */
@@ -313,52 +348,72 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 60px;
-  transition: all 0.3s;
+  padding: 22px 60px;
+  background: rgba(8, 8, 8, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid transparent;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navbar.scrolled {
-  background: rgba(13, 13, 13, 0.95);
-  backdrop-filter: blur(10px);
-  padding: 14px 60px;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+  background: rgba(8, 8, 8, 0.92);
+  border-bottom-color: rgba(245, 196, 0, 0.1);
+  padding: 15px 60px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 
 .nav-brand {
   font-size: 1.5rem;
   font-weight: 900;
   color: #fff;
-  letter-spacing: 1px;
+  letter-spacing: -0.5px;
 }
 
 .nav-brand span {
-  color: #f5c400;
+  color: var(--gold);
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 36px;
+  gap: 40px;
 }
 
 .nav-links a {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.5);
   text-decoration: none;
-  font-size: 0.88rem;
+  font-size: 0.83rem;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
+  position: relative;
   transition: color 0.2s;
 }
 
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--gold);
+  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .nav-links a:hover {
-  color: #f5c400;
+  color: #fff;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 /* ── Hero ── */
 .hero {
   position: relative;
   min-height: 100vh;
-  background: #0d0d0d;
+  background: var(--bg);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -374,68 +429,89 @@ export default {
   pointer-events: none;
 }
 
+.hero-mesh {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(245, 196, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 196, 0, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
 .blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.35;
+  filter: blur(110px);
+  opacity: 0.22;
 }
 
 .blob-1 {
-  width: 500px;
-  height: 500px;
-  background: #f5c400;
-  top: -100px;
-  left: -100px;
-  animation: float 8s ease-in-out infinite;
+  width: 620px;
+  height: 620px;
+  background: radial-gradient(circle, #f5c400, #f59e00);
+  top: -160px;
+  left: -160px;
+  animation: float 11s ease-in-out infinite;
 }
 
 .blob-2 {
-  width: 400px;
-  height: 400px;
-  background: #f5a623;
-  bottom: -80px;
-  right: -80px;
-  animation: float 10s ease-in-out infinite reverse;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #f5a623, #e08000);
+  bottom: -100px;
+  right: -100px;
+  animation: float 14s ease-in-out infinite reverse;
 }
 
 @keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0) scale(1);
-  }
-
-  50% {
-    transform: translateY(-30px) scale(1.05);
-  }
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-40px) scale(1.06); }
 }
 
 .hero-content {
   position: relative;
   z-index: 1;
-  max-width: 700px;
+  max-width: 740px;
 }
 
 .hero-greeting {
-  font-size: 1.1rem;
-  color: #f5c400;
-  font-weight: 600;
-  letter-spacing: 3px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.8rem;
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 18px;
+}
+
+.hero-greeting::before,
+.hero-greeting::after {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.5;
 }
 
 .hero-name {
-  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  font-size: clamp(1.3rem, 6vw, 4rem);
   font-weight: 900;
   color: #fff;
   line-height: 1.1;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .hero-name span {
-  color: #f5c400;
+  background: linear-gradient(135deg, #f5c400 0%, #f5a623 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-roles {
@@ -443,134 +519,145 @@ export default {
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
-  margin-bottom: 36px;
+  margin-bottom: 46px;
 }
 
 .role-chip {
-  background: rgba(245, 196, 0, 0.12);
-  border: 1px solid rgba(245, 196, 0, 0.4);
-  color: #f5c400;
-  padding: 6px 18px;
+  background: rgba(245, 196, 0, 0.07);
+  border: 1px solid rgba(245, 196, 0, 0.22);
+  color: rgba(255, 255, 255, 0.75);
+  padding: 7px 20px;
   border-radius: 999px;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
+  backdrop-filter: blur(6px);
 }
 
 .hero-actions {
   display: flex;
-  gap: 16px;
+  gap: 14px;
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .btn-primary {
-  background: #f5c400;
-  color: #0d0d0d;
-  padding: 14px 32px;
-  border-radius: 8px;
+  background: linear-gradient(135deg, #f5c400 0%, #f5a623 100%);
+  color: #080808;
+  padding: 14px 34px;
+  border-radius: 10px;
   font-weight: 800;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   text-decoration: none;
   transition: transform 0.2s, box-shadow 0.2s;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
+  box-shadow: 0 4px 24px rgba(245, 196, 0, 0.35);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(245, 196, 0, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 36px rgba(245, 196, 0, 0.5);
 }
 
 .btn-outline {
-  border: 2px solid rgba(255, 255, 255, 0.25);
-  color: #fff;
-  padding: 14px 32px;
-  border-radius: 8px;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.75);
+  padding: 14px 34px;
+  border-radius: 10px;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   text-decoration: none;
-  transition: border-color 0.2s, color 0.2s;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  backdrop-filter: blur(4px);
 }
 
 .btn-outline:hover {
-  border-color: #f5c400;
-  color: #f5c400;
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(245, 196, 0, 0.05);
 }
 
 .hero-scroll-hint {
   position: absolute;
-  bottom: 32px;
+  bottom: 36px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   cursor: pointer;
-  color: rgba(255, 255, 255, 0.35);
-  font-size: 0.72rem;
-  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.22);
+  font-size: 0.67rem;
+  letter-spacing: 3px;
   text-transform: uppercase;
 }
 
 .scroll-arrow {
-  width: 20px;
-  height: 20px;
-  border-right: 2px solid rgba(255, 255, 255, 0.35);
-  border-bottom: 2px solid rgba(255, 255, 255, 0.35);
+  width: 18px;
+  height: 18px;
+  border-right: 1.5px solid rgba(255, 255, 255, 0.22);
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.22);
   transform: rotate(45deg);
-  animation: bounce 1.5s ease-in-out infinite;
+  animation: bounce 1.6s ease-in-out infinite;
 }
 
 @keyframes bounce {
-
-  0%,
-  100% {
-    transform: rotate(45deg) translateY(0);
-  }
-
-  50% {
-    transform: rotate(45deg) translateY(4px);
-  }
+  0%, 100% { transform: rotate(45deg) translateY(0); }
+  50% { transform: rotate(45deg) translateY(5px); }
 }
 
 /* ── Sections ── */
 .section {
-  padding: 100px 24px;
-  background: #fff;
+  padding: 110px 24px;
+  background: var(--bg-light);
 }
 
 .section--dark {
-  background: #111;
+  background: var(--bg-dark);
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 1020px;
   margin: 0 auto;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 68px;
 }
 
 .section-tag {
   display: inline-block;
-  background: rgba(245, 196, 0, 0.12);
-  color: #f5c400;
-  border: 1px solid rgba(245, 196, 0, 0.3);
-  padding: 4px 16px;
+  background: rgba(245, 196, 0, 0.1);
+  color: var(--gold);
+  border: 1px solid rgba(245, 196, 0, 0.22);
+  padding: 5px 18px;
   border-radius: 999px;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .section-title {
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
   font-weight: 900;
-  color: #1a1a1a;
+  color: #111;
   letter-spacing: -0.5px;
+  position: relative;
+  padding-bottom: 22px;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-2));
 }
 
 .section--dark .section-title {
@@ -580,8 +667,8 @@ export default {
 /* ── About ── */
 .about-grid {
   display: grid;
-  grid-template-columns: 340px 1fr;
-  gap: 60px;
+  grid-template-columns: 310px 1fr;
+  gap: 72px;
   align-items: center;
 }
 
@@ -592,17 +679,25 @@ export default {
 }
 
 .about-photo-ring {
-  width: 280px;
-  height: 360px;
+  width: 268px;
+  height: 348px;
   border-radius: 24px;
-  padding: 5px;
-  background: linear-gradient(135deg, #f5c400, #f5a623);
+  padding: 4px;
+  background: linear-gradient(135deg, #f5c400 0%, #f5a623 50%, #f5c400 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+  box-shadow: 0 24px 64px rgba(245, 196, 0, 0.22);
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .about-photo {
   width: 100%;
   height: 100%;
-  border-radius: 20px;
+  border-radius: 21px;
   overflow: hidden;
   background: #ddd;
 }
@@ -616,45 +711,53 @@ export default {
 
 .about-badge {
   position: absolute;
-  bottom: 8px;
-  right: 16px;
-  background: #f5c400;
-  color: #0d0d0d;
-  font-size: 0.75rem;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #f5c400, #f5a623);
+  color: #080808;
+  font-size: 0.7rem;
   font-weight: 800;
-  padding: 5px 14px;
+  padding: 7px 20px;
   border-radius: 999px;
   letter-spacing: 1px;
+  white-space: nowrap;
+  box-shadow: 0 6px 20px rgba(245, 196, 0, 0.4);
 }
 
 .about-desc {
-  font-size: 1rem;
-  color: #444;
-  line-height: 1.8;
-  margin-bottom: 28px;
+  font-size: 0.98rem;
+  color: #555;
+  line-height: 1.9;
+  margin-bottom: 32px;
 }
 
 .about-stats {
   display: flex;
-  gap: 32px;
-  margin-bottom: 28px;
-  padding: 20px 0;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
+  gap: 36px;
+  margin-bottom: 32px;
+  padding: 24px 0;
+  border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
 }
 
 .stat-num {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 900;
-  color: #f5c400;
+  background: linear-gradient(135deg, #f5c400, #f5a623);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   line-height: 1;
 }
 
 .stat-label {
-  font-size: 0.78rem;
-  color: #888;
-  font-weight: 600;
-  margin-top: 4px;
+  font-size: 0.72rem;
+  color: #aaa;
+  font-weight: 700;
+  margin-top: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .about-contacts {
@@ -667,150 +770,193 @@ export default {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: #f7f7f7;
-  border: 1px solid #e8e8e8;
-  padding: 8px 16px;
+  background: #fff;
+  border: 1px solid #e2e2e2;
+  padding: 9px 18px;
   border-radius: 999px;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  color: #333;
+  color: #444;
   text-decoration: none;
-  transition: border-color 0.2s, color 0.2s;
+  transition: all 0.2s;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
 .contact-pill:hover {
-  border-color: #f5c400;
-  color: #b8920a;
+  border-color: var(--gold);
+  color: #a87900;
+  box-shadow: 0 4px 14px rgba(245, 196, 0, 0.15);
+  transform: translateY(-1px);
 }
 
 /* ── Skills ── */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
 }
 
 .skill-card {
-  background: #1a1a1a;
-  border: 1px solid #2a2a2a;
-  border-radius: 16px;
-  padding: 32px 24px;
-  transition: transform 0.2s, border-color 0.2s;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px 22px;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s, box-shadow 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-2));
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .skill-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(245, 196, 0, 0.4);
+  transform: translateY(-6px);
+  border-color: var(--gold-border);
+  box-shadow: 0 16px 48px rgba(245, 196, 0, 0.08);
+}
+
+.skill-card:hover::before {
+  opacity: 1;
 }
 
 .skill-card--accent {
-  background: #f5c400;
-  border-color: #f5c400;
+  background: linear-gradient(145deg, #1a1500 0%, #231d00 100%);
+  border-color: rgba(245, 196, 0, 0.28);
+}
+
+.skill-card--accent::before {
+  opacity: 1;
 }
 
 .skill-card--accent h3 {
-  color: #0d0d0d;
+  color: var(--gold);
 }
 
 .skill-card-icon {
-  font-size: 2rem;
-  margin-bottom: 12px;
+  font-size: 1.8rem;
+  margin-bottom: 14px;
+  display: block;
 }
 
 .skill-card h3 {
-  font-size: 1rem;
+  font-size: 0.78rem;
   font-weight: 800;
-  color: #fff;
+  color: #d0d0d0;
   margin-bottom: 16px;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .skill-pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 7px;
 }
 
 .skill-pill {
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.85);
-  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.65);
+  padding: 4px 11px;
   border-radius: 6px;
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 600;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.skill-card:hover .skill-pill {
+  border-color: rgba(245, 196, 0, 0.18);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .skill-card--accent .skill-pill {
-  background: rgba(0, 0, 0, 0.1);
-  color: #1a1a1a;
+  background: rgba(245, 196, 0, 0.1);
+  border-color: rgba(245, 196, 0, 0.2);
+  color: rgba(245, 196, 0, 0.85);
 }
 
 /* ── Timeline ── */
 .timeline {
   position: relative;
-  padding: 0 0 0 40px;
+  padding: 0 0 0 52px;
 }
 
 .timeline::before {
   content: '';
   position: absolute;
-  left: 12px;
+  left: 15px;
   top: 0;
   bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, #f5c400, rgba(245, 196, 0, 0.1));
+  width: 1.5px;
+  background: linear-gradient(to bottom, var(--gold), rgba(245, 196, 0, 0.04));
 }
 
 .timeline-item {
   position: relative;
-  margin-bottom: 40px;
+  margin-bottom: 28px;
 }
 
 .timeline-dot {
   position: absolute;
-  left: -35px;
-  top: 20px;
-  width: 14px;
-  height: 14px;
+  left: -43px;
+  top: 26px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background: #f5c400;
-  border: 3px solid #fff;
-  box-shadow: 0 0 0 3px rgba(245, 196, 0, 0.25);
+  background: var(--gold);
+  box-shadow: 0 0 0 4px rgba(245, 196, 0, 0.14), 0 0 18px rgba(245, 196, 0, 0.35);
 }
 
 .timeline-card {
-  background: #f9f9f9;
-  border: 1px solid #eee;
-  border-radius: 12px;
-  padding: 24px 28px;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  background: #fff;
+  border: 1px solid #ececec;
+  border-left: 3px solid var(--gold);
+  border-radius: 14px;
+  padding: 26px 28px;
+  transition: box-shadow 0.25s, transform 0.25s;
+  position: relative;
 }
 
 .timeline-card:hover {
-  border-color: rgba(245, 196, 0, 0.5);
-  box-shadow: 0 4px 20px rgba(245, 196, 0, 0.1);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.07);
+  transform: translateX(5px);
 }
 
 .tc-period {
-  font-size: 0.78rem;
+  display: inline-block;
+  background: rgba(245, 196, 0, 0.1);
+  color: #a87a00;
+  border: 1px solid rgba(245, 196, 0, 0.25);
+  padding: 3px 12px;
+  border-radius: 999px;
+  font-size: 0.7rem;
   font-weight: 700;
-  color: #f5a623;
   letter-spacing: 0.5px;
-  margin-bottom: 6px;
   text-transform: uppercase;
+  margin-bottom: 12px;
 }
 
 .tc-title {
   font-size: 1rem;
   font-weight: 800;
-  color: #1a1a1a;
+  color: #111;
   margin-bottom: 4px;
 }
 
 .tc-company {
-  font-size: 0.85rem;
-  color: #888;
-  margin-bottom: 12px;
+  font-size: 0.82rem;
+  color: #bbb;
+  font-weight: 600;
+  margin-bottom: 14px;
 }
 
 .tc-list {
@@ -819,74 +965,96 @@ export default {
 }
 
 .tc-list li {
-  font-size: 0.85rem;
+  font-size: 0.83rem;
   color: #555;
-  line-height: 1.7;
-  padding-left: 14px;
+  line-height: 1.78;
+  padding-left: 16px;
   position: relative;
+  margin-bottom: 1px;
 }
 
 .tc-list li::before {
   content: '▸';
   position: absolute;
   left: 0;
-  color: #f5c400;
-  font-size: 0.7rem;
-  top: 2px;
+  color: var(--gold);
+  font-size: 0.65rem;
+  top: 4px;
 }
 
 /* ── Education ── */
 .edu-cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  gap: 20px;
 }
 
 .edu-card {
-  background: #1a1a1a;
-  border: 1px solid #2a2a2a;
-  border-radius: 16px;
+  background: var(--bg-card-2);
+  border: 1px solid #202020;
+  border-radius: 20px;
   padding: 32px 28px;
   display: flex;
   gap: 20px;
   align-items: flex-start;
-  transition: border-color 0.2s, transform 0.2s;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.edu-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-2));
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .edu-card:hover {
-  border-color: rgba(245, 196, 0, 0.4);
-  transform: translateY(-3px);
+  border-color: rgba(245, 196, 0, 0.35);
+  transform: translateY(-5px);
+  box-shadow: 0 18px 52px rgba(245, 196, 0, 0.07);
+}
+
+.edu-card:hover::after {
+  opacity: 1;
 }
 
 .edu-card-icon {
-  font-size: 2rem;
+  font-size: 2.2rem;
   flex-shrink: 0;
-  margin-top: 2px;
 }
 
 .edu-card-year {
-  font-size: 0.78rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  color: #f5c400;
-  letter-spacing: 1px;
-  margin-bottom: 6px;
+  color: var(--gold);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
 }
 
 .edu-card-degree {
   font-size: 1rem;
   font-weight: 800;
-  color: #fff;
-  margin-bottom: 4px;
+  color: #f0f0f0;
+  margin-bottom: 6px;
+  line-height: 1.4;
 }
 
 .edu-card-school {
-  font-size: 0.82rem;
-  color: #888;
+  font-size: 0.8rem;
+  color: #666;
+  line-height: 1.5;
 }
 
 /* ── Contact ── */
 .contact-section {
-  background: #0d0d0d;
+  background: #060606;
 }
 
 .contact-section .section-title {
@@ -896,60 +1064,101 @@ export default {
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 18px;
 }
 
 .contact-card {
-  background: #1a1a1a;
-  border: 1px solid #2a2a2a;
-  border-radius: 16px;
-  padding: 36px 24px;
+  background: var(--bg-card);
+  border: 1px solid #1c1c1c;
+  border-radius: 20px;
+  padding: 40px 24px;
   text-align: center;
-  transition: border-color 0.2s, transform 0.2s;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-2));
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .contact-card:hover {
-  border-color: #f5c400;
-  transform: translateY(-4px);
+  border-color: rgba(245, 196, 0, 0.4);
+  transform: translateY(-7px);
+  box-shadow: 0 22px 60px rgba(245, 196, 0, 0.1);
+}
+
+.contact-card:hover::before {
+  opacity: 1;
 }
 
 .cc-icon {
-  font-size: 2.2rem;
-  margin-bottom: 12px;
+  width: 58px;
+  height: 58px;
+  background: rgba(245, 196, 0, 0.09);
+  border: 1px solid rgba(245, 196, 0, 0.18);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  margin: 0 auto 18px;
+  transition: background 0.25s, border-color 0.25s;
+}
+
+.contact-card:hover .cc-icon {
+  background: rgba(245, 196, 0, 0.16);
+  border-color: rgba(245, 196, 0, 0.4);
 }
 
 .cc-label {
-  font-size: 0.75rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  color: #f5c400;
-  letter-spacing: 2px;
+  color: var(--gold);
+  letter-spacing: 2.5px;
   text-transform: uppercase;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .cc-value {
-  font-size: 0.88rem;
-  color: #ccc;
+  font-size: 0.85rem;
+  color: #aaa;
   text-decoration: none;
-  line-height: 1.6;
+  line-height: 1.65;
   font-weight: 500;
+  transition: color 0.2s;
 }
 
 .cc-value:hover {
-  color: #f5c400;
+  color: var(--gold);
 }
 
 /* ── Footer ── */
 .footer {
-  background: #0d0d0d;
-  border-top: 1px solid #1e1e1e;
+  background: #040404;
+  border-top: 1px solid #131313;
   text-align: center;
-  padding: 24px;
-  font-size: 0.8rem;
-  color: #555;
+  padding: 28px;
+  font-size: 0.76rem;
+  color: #3a3a3a;
+  letter-spacing: 0.3px;
 }
 
 /* ── Responsive ── */
+@media (max-width: 900px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .navbar {
     padding: 16px 24px;
@@ -966,6 +1175,7 @@ export default {
   .about-grid {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: 48px;
   }
 
   .about-photo-wrap {
@@ -980,10 +1190,6 @@ export default {
     justify-content: center;
   }
 
-  .skills-grid {
-    grid-template-columns: 1fr;
-  }
-
   .edu-cards {
     grid-template-columns: 1fr;
   }
@@ -993,6 +1199,21 @@ export default {
   }
 
   .timeline {
-    padding-left: 28px;
+    padding-left: 32px;
+  }
+}
+
+@media (max-width: 520px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-name {
+    letter-spacing: 0px;
+  }
+
+  .hero-greeting::before,
+  .hero-greeting::after {
+    display: none;
   }
 }</style>
